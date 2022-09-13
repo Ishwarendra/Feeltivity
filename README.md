@@ -28,3 +28,7 @@ So, our product would actually **easen the songs-listening process** of the user
 - The system will also **recommend based on your history** and past moods too.
 
 - For simplicity, the user can also **simply surf any song** and listen to it.
+
+## Level-0 Data Flow Diagram (DFD)
+
+![Level_0_DFD]("https://github.com/Ishwarendra/Feeltivity/images/level0_DFD.png");

@@ -30,5 +30,5 @@ So, our product would actually **easen the songs-listening process** of the user
 - For simplicity, the user can also **simply surf any song** and listen to it.
 
 ## Level-0 Data Flow Diagram (DFD)
+![Level_0_DFD](https://github.com/Ishwarendra/Feeltivity/blob/main/images/level0_DFD.png?raw=true)
 
-![Level_0_DFD]("https://github.com/Ishwarendra/Feeltivity/blob/main/images/level0_DFD.png");

@@ -31,4 +31,4 @@ So, our product would actually **easen the songs-listening process** of the user
 
 ## Level-0 Data Flow Diagram (DFD)
 
-![Level_0_DFD]("https://github.com/Ishwarendra/Feeltivity/images/level0_DFD.png");
+![Level_0_DFD](./images/level0_DFD.png);

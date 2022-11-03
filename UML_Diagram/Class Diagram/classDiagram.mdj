@@ -3897,7 +3897,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGEPBIgcAyS9Uo="
 							},
-							"name": "apiUsageCount"
+							"name": "apiUsageCount",
+							"type": ""
 						}
 					],
 					"operations": [
@@ -4071,7 +4072,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGEPDHUuYirBC0="
 							},
-							"name": "totalUserCount"
+							"name": "totalUserCount",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -4079,7 +4081,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGEPDHUuYirBC0="
 							},
-							"name": "totalAPICallsMade"
+							"name": "totalAPICallsMade",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -4087,7 +4090,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGEPDHUuYirBC0="
 							},
-							"name": "successfulAPICallsMade"
+							"name": "successfulAPICallsMade",
+							"type": ""
 						}
 					],
 					"operations": [

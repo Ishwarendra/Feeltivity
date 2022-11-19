@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { auth, db } from "../../firebase-config";
 
 import { Button, TextField } from "@mui/material";
@@ -96,7 +96,9 @@ export default function Login() {
 
         <div>
           Don't have an account yet?
-          <Button variant="text" onClick={handleClick}>Sign Up</Button>
+          <Link variant="text" to={'/register'}>
+            <Button variant="text">Sign Up</Button>
+          </Link>
         </div>
       </div>
     </div>

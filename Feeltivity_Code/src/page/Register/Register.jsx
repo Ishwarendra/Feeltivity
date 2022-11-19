@@ -1,7 +1,8 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import React,{useState} from 'react'
 import { useNavigate } from 'react-router-dom';
-import {auth, db} from '../../firebase-config'
+import {auth,db} from '../../firebase-config'
+import { setDoc,doc,Timestamp} from 'firebase/firestore';
 
 export default function Register() {
   const navigate=useNavigate()
@@ -9,8 +10,10 @@ export default function Register() {
     name:'',
     email:'',
     password:'',
-    error:''
+    error:null,
+    loading:false
   });
+  let {name,email,password,error,loading}=data;
 
   const handleChange=(e)=>{
     setData({...data,[e.target.name]:e.target.value})
@@ -18,11 +21,30 @@ export default function Register() {
 
   const RegisterUser = async(e)=>{
     e.preventDefault()
+    setData({...data,error:null,loading:true})
     if(!data.name || !data.email || !data.password){
-      setData({...data,error:"All fields are required!"})
+        setData({...data,error:"All fields are required!"})
     }
-    const result = await createUserWithEmailAndPassword(auth,data.email,data.password);
-    navigate('/')
+    try{
+        const result=await createUserWithEmailAndPassword(auth,data.email,data.password)
+        await setDoc(doc(db,'users',result.user.uid),{name,
+        uid:result.user.uid,
+        email,
+        createdAt:Timestamp.fromDate(new Date()),
+        isOnline:true,
+        })
+        setData({
+            name:'',
+            email:'',
+            password:'',
+            error:null,
+            loading:false
+        })
+        navigate('/');
+    }
+    catch(err){
+        setData({...data,error:err.message,loading:false})
+    }
   }
 
   return (
@@ -44,8 +66,8 @@ export default function Register() {
           <input type="password" name="password" placeholder='Enter Password' className='mx-2 border-2 border-black' onChange={handleChange}/>
         </div>
         <div className="">
-          <button className="bg-teal-600">
-            Register
+          <button className="bg-teal-600" disabled={loading}>
+          {loading ? "Creating ..." : "Register"}
           </button>
       </div>
       </form>

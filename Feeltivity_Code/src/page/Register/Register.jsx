@@ -4,6 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import {auth,db} from '../../firebase-config'
 import { setDoc,doc,Timestamp} from 'firebase/firestore';
 
+import { Button, TextField } from "@mui/material";
+import logo from "./../../assets/image/logo.ico";
+import GoogleIcon from "@mui/icons-material/Google";
+
 export default function Register() {
   const navigate=useNavigate()
   const [data,setData]=useState({
@@ -48,29 +52,68 @@ export default function Register() {
   }
 
   return (
-    <div>
-      <div>
-        Create an Account
+    <div className="grid grid-cols-1 sm:grid-cols-2">
+      {/* Content (Username, password, ) + Image */}
+      {/* Logo */}
+      {/* Some Text saying hello */}
+      {/* Some one-liner */}
+      {/* Email*/}
+      {/* Password */}
+      {/* some gap then Login (sign in with google account) */}
+      {/* in end Don't have an account yet? Sign Up */}
+
+      <div className="hidden h-[100vh] bg-[#2d5abf] sm:block">
+        <div className="text-white font-semibold">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea,
+            tempore?</div>
       </div>
-      <form onSubmit={RegisterUser} className="content-center">
-        <div>
-          <label htmlFor="name">Name</label>
-          <input type="text" name="name" placeholder='Enter Name' className='mx-2 border-2 border-black' onChange={handleChange}/>
+
+      <div className="text-center mx-[10%] flex flex-col justify-evenly">
+        <div className="block">
+          <img src={logo} alt="" className="cover m-auto" />
+          <div className="text-4xl uppercase mt-5 mb-1">hello!</div>
+          <div>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea,
+            tempore?
+          </div>
         </div>
+
+        <form className="grid grid-cols-1 mx-[5%] sm:mx-[5%] md:mx-[15%]">
+          <TextField
+            id="outlined-username-input"
+            label="Email"
+            type="username"
+            autoComplete="current-password"
+            sx={{ my: 1 }}
+            onChange={handleChange}
+          />
+
+          {/* Add onChange = {function} when making function */}
+          <TextField
+            id="outlined-password-input"
+            label="Password"
+            type="password"
+            autoComplete="current-password"
+            sx={{ my: 1 }}
+            onChange={handleChange}
+          />
+
+          <Button variant="contained" sx={{ mt: 5, p: 1 }} onChange={RegisterUser}>
+            Login
+          </Button>
+          <Button
+            variant="outlined"
+            sx={{ mt: 2, p: 1 }}
+            startIcon={<GoogleIcon />}
+          >
+            Sign In With Google
+          </Button>
+        </form>
+
         <div>
-          <label htmlFor="email">Email</label>
-          <input type="email" name="email" placeholder='Enter Email' className='mx-2 border-2 border-black' onChange={handleChange}/>
+          Don't have an account yet?
+          <Button variant="text">Sign Up</Button>
         </div>
-        <div>
-          <label htmlFor="password">Password</label>
-          <input type="password" name="password" placeholder='Enter Password' className='mx-2 border-2 border-black' onChange={handleChange}/>
-        </div>
-        <div className="">
-          <button className="bg-teal-600" disabled={loading}>
-          {loading ? "Creating ..." : "Register"}
-          </button>
       </div>
-      </form>
     </div>
   )
 }

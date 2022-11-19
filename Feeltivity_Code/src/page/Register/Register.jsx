@@ -10,6 +10,7 @@ import GoogleIcon from "@mui/icons-material/Google";
 
 export default function Register() {
   const navigate = useNavigate();
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -26,8 +27,12 @@ export default function Register() {
   const RegisterUser = async (e) => {
     e.preventDefault();
     setData({ ...data, error: null, loading: true });
-    if (!data.name || !data.email || !data.password) {
+    if (!data.name || !data.email || !data.password || !confirmPassword) {
       setData({ ...data, error: "All fields are required!" });
+      return;
+    } else if (confirmPassword !== data.password) {
+      console.log("Passwords do not match! Enter again."); // Replace with Toast
+      return;
     }
     try {
       const result = await createUserWithEmailAndPassword(
@@ -105,17 +110,18 @@ export default function Register() {
             onChange={handleChange}
           />
 
-          {/* <TextField
+          <TextField
+            name="confirm_password"
             label="Confirm Password"
             type="password"
             autoComplete="current-password"
             sx={{ my: 1 }}
-            onChange={handleChange}
-          /> */}
+            onChange={e => setConfirmPassword(e.target.value)}
+          />
 
           <Button
             variant="contained"
-            sx={{ mt: 5, p: 1 }}
+            sx={{ mt: 3, p: 1 }}
             onClick={RegisterUser}
           >
             Register

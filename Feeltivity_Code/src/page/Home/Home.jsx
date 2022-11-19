@@ -4,16 +4,6 @@ import { auth } from "../../firebase-config";
 import { useNavigate } from "react-router-dom";
 
 export default function Home() {
-  auth().onAuthStateChanged(function(user) {
-    try {
-    if (user) {
-      console.log("user is signed in");
-    } else {
-      console.log('No user is signed in');
-    } } catch {
-      console.log("error");
-    }
-  });
   
   return (
     <div className="p-3 bg-gradient-to-r from-[#fff] via-[#60cde1] to-[#fff] bg-cover">

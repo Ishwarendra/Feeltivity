@@ -3,14 +3,6 @@ import music_player_blue from "./../../assets/svg/music_player_blue.svg";
 
 export default function Home() {
   return (
-<<<<<<< HEAD
-    <div className='bg-indigo-500'>
-      Home
-    <div className=''>
-      <p class="bg-red-300">
-        aghaghg
-      </p>
-=======
     <div className="p-3 bg-gradient-to-r from-[#fff] via-[#60cde1] to-[#fff] bg-cover">
       {/* Navbar */}
       <div className="p-5 text-center">
@@ -36,7 +28,6 @@ export default function Home() {
       <div>
         Elo, me footer.
       </div>
->>>>>>> b909264723a6d3e123e29d35d9b498898ef2bda6
     </div>
   );
 }

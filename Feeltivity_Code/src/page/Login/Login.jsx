@@ -44,8 +44,9 @@ export default function Login() {
       {/* some gap then Login (sign in with google account) */}
       {/* in end Don't have an account yet? Sign Up */}
 
-      <div className="hidden h-[100vh] bg-[#2d5abf] sm:block justify-evenly"> 
-        <img src={logo} alt="" />
+      {/* Left Side */}
+      <div className="hidden h-[100vh] bg-[#2d5abf] sm:text-center sm:align-middle sm:flex sm:flex-col justify-center"> 
+        <div className="flex justify-center mb-11"><img src={logo} alt="" className="" /></div>
         <div className="bold text-white text-6xl uppercase">Feeltivity</div>
         <div className="text-white font-semibold">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, tempore?
@@ -96,7 +97,7 @@ export default function Login() {
 
         <div>
           Don't have an account yet?
-          <Link variant="text" to={'/register'}>
+          <Link type="text" to={'/register'}>
             <Button variant="text">Sign Up</Button>
           </Link>
         </div>

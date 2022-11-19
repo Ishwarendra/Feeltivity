@@ -45,13 +45,14 @@ export default function Login() {
       {/* in end Don't have an account yet? Sign Up */}
 
       <div className="hidden h-[100vh] bg-[#2d5abf] sm:block">
-        {/* Some image here maybe */}
+        <div className="text-white font-semibold">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea,
+            tempore?</div>
       </div>
 
       <div className="text-center mx-[10%] flex flex-col justify-evenly">
         <div className="block">
-          <img src={logo} alt="" className="cover" />
-          <div>HELLO!</div>
+          <img src={logo} alt="" className="cover m-auto" />
+          <div className="text-4xl uppercase mt-5 mb-1">hello!</div>
           <div>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea,
             tempore?
@@ -78,17 +79,22 @@ export default function Login() {
             onChange={handleChange}
           />
 
-          <Button variant="contained" sx={{ mt: 6, p: 1 }} onChange={LogInUser}>
+          <Button variant="contained" sx={{ mt: 5, p: 1 }} onChange={LogInUser}>
             Login
           </Button>
           <Button
             variant="outlined"
             sx={{ mt: 2, p: 1 }}
-            endIcon={<GoogleIcon />}
+            startIcon={<GoogleIcon />}
           >
-            Login
+            Sign In With Google
           </Button>
         </form>
+
+        <div>
+          Don't have an account yet?
+          <Button variant="text">Sign Up</Button>
+        </div>
       </div>
     </div>
   );

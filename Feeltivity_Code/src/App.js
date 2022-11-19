@@ -16,7 +16,6 @@ function App() {
         <Route exact path='/login' element={<Login/>} />
         <Route exact path='/aboutus' element={<AboutUs/>} />
         <Route exact path='/chatpage' element={<ChatPage/>} />
-
       </Routes>
     </Router>
   );

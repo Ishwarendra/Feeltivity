@@ -12,6 +12,7 @@ export default function Home() {
       {/* Some Content (with button) | SVG */}
       {/* Some Button and more text */}
       <div className="flex text-center max-h-[70vh]">
+
         <div className="flex-1 align-center m-auto">
           <div className="text-[50px] uppercase">Feeltivity</div>
           <div className="text-md">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quibusdam praesentium, non enim laborum harum fuga ad.</div>
@@ -20,8 +21,13 @@ export default function Home() {
         <div className="flex-1 bg-no-repeat bg-center bg-auto">
           <img src={music_player_blue} alt="woman and music player" className="bg-cover max-h-[90%]" />
         </div>
+        
       </div>
+
       {/* Footer */}
+      <div>
+        Elo, me footer.
+      </div>
     </div>
   );
 }

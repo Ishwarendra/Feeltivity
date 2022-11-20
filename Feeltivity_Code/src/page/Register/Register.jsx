@@ -72,10 +72,12 @@ export default function Register() {
       {/* in end Don't have an account yet? Sign Up */}
 
       <div className="text-center mx-[10%] flex flex-col justify-around">
-        <div className="block">
-          <img src={logo} alt="" className="cover m-auto" />
-          <div className="text-4xl uppercase mt-5 mb-1">hello!</div>
-          <div>
+        <div className="grid grid-cols-1 mx-[5%] sm:mx-[5%] md:mx-[15%]">
+          <div className="grid grid-cols-3 place-items-center place-content-center m-auto">
+            <img src={logo} alt="" className="contain m-auto" />
+            <div className="text-4xl uppercase mt-5 mb-1 col-span-2">hello!</div>
+          </div>
+          <div className="font-semibold col-span-2">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea,
             tempore?
           </div>
@@ -116,7 +118,7 @@ export default function Register() {
             type="password"
             autoComplete="current-password"
             sx={{ my: 1 }}
-            onChange={e => setConfirmPassword(e.target.value)}
+            onChange={(e) => setConfirmPassword(e.target.value)}
           />
 
           <Button
@@ -130,6 +132,7 @@ export default function Register() {
             variant="outlined"
             sx={{ mt: 2, p: 1 }}
             endIcon={<GoogleIcon />}
+            fullWidth
           >
             Sign In With Google
           </Button>

@@ -65,6 +65,7 @@ export default function Login() {
 
         <form className="grid grid-cols-1 mx-[5%] sm:mx-[5%] md:mx-[15%]">
           <TextField
+            name="email"
             id="outlined-username-input"
             label="Email"
             type="username"
@@ -75,6 +76,7 @@ export default function Login() {
 
           {/* Add onChange = {function} when making function */}
           <TextField
+            name="password"
             id="outlined-password-input"
             label="Password"
             type="password"
@@ -83,7 +85,7 @@ export default function Login() {
             onChange={handleChange}
           />
 
-          <Button variant="contained" sx={{ mt: 5, p: 1 }} onChange={LogInUser}>
+          <Button variant="contained" sx={{ mt: 5, p: 1 }} onClick={LogInUser}>
             Login
           </Button>
           <Button

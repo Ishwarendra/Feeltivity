@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext ,useEffect} from "react";
 import music_player_blue from "./../../assets/svg/music_player_blue.svg";
 import { auth } from "../../firebase-config";
 import { Navigate, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../contexts/auth";
 
 export default function Home() {
-  // const navigate=useNavigate();
+  const navigate=useNavigate();
+  const user=useContext(AuthContext)
   // auth().onAuthStateChanged(function(user) {
   //   try {
   //   if (user) {
@@ -15,7 +17,13 @@ export default function Home() {
   //     console.log("error");
   //   }
   // });
-  
+  useEffect(()=>{
+    if(!user){
+        navigate('/login');
+    }
+    else console.log(user);
+},[user])
+
   return (
     <div className="p-3 bg-gradient-to-r from-[#fff] via-[#60cde1] to-[#fff] bg-cover">
       {/* Navbar */}

@@ -3,6 +3,7 @@ import music_player_blue from "./../../assets/svg/music_player_blue.svg";
 import { auth } from "../../firebase-config";
 import { Navigate, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/auth";
+import Navbar from "../../components/Navbar/Navbar";
 
 export default function Home() {
   const navigate=useNavigate();
@@ -25,10 +26,10 @@ export default function Home() {
 },[user])
 
   return (
-    <div className="p-3 bg-gradient-to-r from-[#fff] via-[#60cde1] to-[#fff] bg-cover">
+    <div>
       {/* Navbar */}
-      <div className="p-5 text-center">
-        Elo me Navbar
+      <div className="text-center">
+          <Navbar />
       </div>
 
       {/* Some Content (with button) | SVG */}

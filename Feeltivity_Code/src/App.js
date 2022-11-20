@@ -7,6 +7,7 @@ import  Register from './page/Register/Register'
 import ChatPage from './page/ChatPage/ChatPage'
 import AuthProvider from './contexts/auth';
 
+// Home
 
 function App() {
   return (

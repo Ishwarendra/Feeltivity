@@ -19,11 +19,12 @@ export default function Home() {
   //   }
   // });
   useEffect(()=>{
-    if(!user){
+    console.log(user);
+    if(!user.user){
         navigate('/login');
     }
-    else console.log(user);
-},[user])
+    // else console.log(user,'hi');
+  },[])
 
   return (
     <div>

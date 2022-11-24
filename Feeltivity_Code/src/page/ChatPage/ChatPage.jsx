@@ -26,12 +26,28 @@ export default function ChatPage() {
         <Navbar />
       </div>
 
-      <div className="m-1 md:m-5">
+      <div className="m-1 sm:m-5 md:mx-10">
         {/* Bottom has a chat button */}
         <div className="h-[95-vh] md:h-[85vh]">
-          <ChatMessage msg={"There are some variations of lorem ipsum paragraphs"} human={true} sentTime={"11:44 PM"} />
-          <br /> <br /> 
-          <ChatMessage msg={"I am just a chatbot I don't know. But here is a song for you :)"} human={false} sentTime={"11:45 PM"} />
+          <div className="grid grid-cols-1 place-items-end">
+            <ChatMessage
+              msg={"There are some variations of lorem ipsum paragraphs"}
+              human={true}
+              sentTime={"11:44 PM"}
+            />
+          </div>
+
+          <br /> <br />
+
+          <div className="grid grid-cols-1 place-items-start">
+            <ChatMessage
+              msg={
+                "I am just a chatbot I don't know. But here is a song for you :) To make this message bigger I will write something three time. Something Something Something"
+              }
+              human={false}
+              sentTime={"11:45 PM"}
+            />
+          </div>
         </div>
       </div>
     </div>

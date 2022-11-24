@@ -23,7 +23,7 @@ const Navbar = () => {
   console.log("NavBar.jsx", user);
 
   return (
-    <div className="grid grid-cols-4 gap-5 justify-evenly align-middle border-b-4 place-items-stretch pl-10">
+    <div className="grid grid-cols-4 gap-5 justify-evenly align-middle place-items-stretch pl-10 bg-green-100">
       {/* LOGO: goto Home */}
       <div className="block">
         <Link to="/">

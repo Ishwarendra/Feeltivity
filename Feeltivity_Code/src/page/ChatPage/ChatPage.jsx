@@ -34,7 +34,7 @@ export default function ChatPage() {
 
       <div className="m-1 sm:m-5 md:mx-10 my-5">
         {/* Bottom has a chat button */}
-        <div className="border-4 h-[95-vh] md:h-[70vh]">
+        <div className="h-[95-vh] md:h-[70vh]">
           <div className="grid grid-cols-1 place-items-end hover:bg-gray-200 p-[2px]">
             <ChatMessage
               msg={"There are some variations of lorem ipsum paragraphs"}

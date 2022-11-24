@@ -1,13 +1,19 @@
-import React, { useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import { auth } from "../../firebase-config";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/auth";
 import { ChatMessage } from "../../components/ChatMessage/ChatMessage";
+import { Button, TextField } from "@mui/material";
+import SendRoundedIcon from '@mui/icons-material/SendRounded';
+
+// on Hover change all Chat Message bg color
 
 export default function ChatPage() {
   const navigate = useNavigate();
   const user = useContext(AuthContext);
+  const [messageInBox, setMessageInBox] = useState('');
+  const [sendButtonDisabled, setSendButtonDisabled] = useState(true);
 
   // useEffect(() => {
   //   console.log(user, "user-change");
@@ -26,10 +32,10 @@ export default function ChatPage() {
         <Navbar />
       </div>
 
-      <div className="m-1 sm:m-5 md:mx-10">
+      <div className="m-1 sm:m-5 md:mx-10 my-5">
         {/* Bottom has a chat button */}
-        <div className="h-[95-vh] md:h-[85vh]">
-          <div className="grid grid-cols-1 place-items-end">
+        <div className="border-4 h-[95-vh] md:h-[70vh]">
+          <div className="grid grid-cols-1 place-items-end hover:bg-gray-200 p-[2px]">
             <ChatMessage
               msg={"There are some variations of lorem ipsum paragraphs"}
               human={true}
@@ -37,9 +43,7 @@ export default function ChatPage() {
             />
           </div>
 
-          <br /> <br />
-
-          <div className="grid grid-cols-1 place-items-start">
+          <div className="grid grid-cols-1 place-items-start my-5 hover:bg-gray-200 p-[2px]">
             <ChatMessage
               msg={
                 "I am just a chatbot I don't know. But here is a song for you :) To make this message bigger I will write something three time. Something Something Something"
@@ -49,7 +53,20 @@ export default function ChatPage() {
             />
           </div>
         </div>
-      </div>
+
+        {/* Message Box */}
+          <div className="mt-2 flex">
+            <TextField
+              placeholder="Type Something ... "
+              multiline
+              fullWidth
+              sx={{width: '100%', mr: 2}}
+              maxRows={2}
+              onChange={(e) => {setMessageInBox(e.target.value); setSendButtonDisabled(!e.target.value);}}
+            />
+            <Button variant="outlined" disabled={sendButtonDisabled}><SendRoundedIcon /></Button>
+          </div>
+        </div>
     </div>
   );
 }

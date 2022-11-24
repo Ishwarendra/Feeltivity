@@ -5,14 +5,14 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/auth";
 import { ChatMessage } from "../../components/ChatMessage/ChatMessage";
 import { Button, TextField } from "@mui/material";
-import SendRoundedIcon from '@mui/icons-material/SendRounded';
+import SendRoundedIcon from "@mui/icons-material/SendRounded";
 
 // on Hover change all Chat Message bg color
 
 export default function ChatPage() {
   const navigate = useNavigate();
   const user = useContext(AuthContext);
-  const [messageInBox, setMessageInBox] = useState('');
+  const [messageInBox, setMessageInBox] = useState("");
   const [sendButtonDisabled, setSendButtonDisabled] = useState(true);
 
   // useEffect(() => {
@@ -32,9 +32,9 @@ export default function ChatPage() {
         <Navbar />
       </div>
 
-      <div className="m-1 sm:m-5 md:mx-10 my-5">
+      <div className="border-2 border-[#e8e7ec] p-1 sm:p-5 md:px-5 py-5">
         {/* Bottom has a chat button */}
-        <div className="h-[95-vh] md:h-[70vh]">
+        <div className="h-[95-vh] md:h-[65vh]">
           <div className="grid grid-cols-1 place-items-end hover:bg-gray-200 p-[2px]">
             <ChatMessage
               msg={"There are some variations of lorem ipsum paragraphs"}
@@ -55,18 +55,29 @@ export default function ChatPage() {
         </div>
 
         {/* Message Box */}
-          <div className="mt-2 flex">
-            <TextField
-              placeholder="Type Something ... "
-              multiline
-              fullWidth
-              sx={{width: '100%', mr: 2}}
-              maxRows={2}
-              onChange={(e) => {setMessageInBox(e.target.value); setSendButtonDisabled(!e.target.value);}}
-            />
-            <Button variant="outlined" disabled={sendButtonDisabled}><SendRoundedIcon /></Button>
+        <div className="mt-2 flex">
+          <TextField
+            placeholder="Type Something ... "
+            multiline
+            fullWidth
+            sx={{ width: "100%", mr: 2 }}
+            maxRows={3}
+            onChange={(e) => {
+              setMessageInBox(e.target.value);
+              setSendButtonDisabled(!e.target.value);
+            }}
+          />
+          <div className='grid grid-cols-1 place-items-center'>
+            <Button
+              variant="contained"
+              disabled={sendButtonDisabled}
+              sx={{ color: "#3b5bff", py: 1.5 }}
+            >
+              <SendRoundedIcon sx={{ color: "white" }} />
+            </Button>
           </div>
         </div>
+      </div>
     </div>
   );
 }

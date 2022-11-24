@@ -1,6 +1,7 @@
 import { Avatar } from "@mui/material";
-import { bgcolor } from "@mui/system";
 import React from "react";
+
+// H = HUMAN and C = CHATBOT
 
 export const ChatMessage = ({ msg, human, sentTime }) => {
   var unCommonClass = "";
@@ -12,7 +13,7 @@ export const ChatMessage = ({ msg, human, sentTime }) => {
 
   return (
     <div className="flex">
-      {!human && <div className="self-end mr-2">
+      {!human && <div className="self-end mr-2 ml-1">
         <Avatar sx={{bgcolor: "blue"}}>C</Avatar>
       </div>}
 
@@ -25,7 +26,7 @@ export const ChatMessage = ({ msg, human, sentTime }) => {
         </div>
       </div>
 
-      {human && <div className="self-end ml-2">
+      {human && <div className="self-end ml-2 mr-1">
         <Avatar sx={{bgcolor: "red"}}>H</Avatar>
       </div>}
     </div>

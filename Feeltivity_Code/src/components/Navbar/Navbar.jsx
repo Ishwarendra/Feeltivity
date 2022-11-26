@@ -1,9 +1,9 @@
 import { LogoutRounded } from "@mui/icons-material";
 import { Avatar, Button } from "@mui/material";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "./../../assets/image/logo.ico";
-import { updateDoc, doc } from "firebase/firestore";
+import { updateDoc, doc, collection, deleteDoc,onSnapshot } from "firebase/firestore";
 import { db, auth } from "../../firebase-config";
 import { AuthContext } from "../../contexts/auth";
 import { signOut } from "firebase/auth";
@@ -11,13 +11,41 @@ import { lightBlue } from "@mui/material/colors";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const curr_user=auth.currentUser?.uid;
+  const [msgs,setMsgs]=useState([]);
   const handleSignout = async () => {
     await updateDoc(doc(db, "users", auth.currentUser?.uid), {
       isOnline: false,
     });
+    if(curr_user){
+      const chatCollectionRef=collection(db,'messages',curr_user,'chats');
+    onSnapshot(chatCollectionRef,(snap)=>{
+      let messages=[];
+      snap.forEach((doc)=>{
+        messages.push({...doc.data(),id: doc.id});
+      })
+      setMsgs(messages);
+      console.log(messages,'messages');
+      // console.log(msgs,'cm')
+
+  })
+  }
+  
+  // console.log(msgs,'cm')
+  msgs?.map(async (msg)=>{
+    const chatDocRef=doc(db,'messages',curr_user,'chats',msg.id);
+    console.log(msg.id);
+    await deleteDoc(chatDocRef);
+
+  })
+    
+
     signOut(auth);
     navigate("/login");
   };
+  // useEffect(()=>{
+  //   console.log(msgs,'cm');
+  // },[msgs])
 
   const user = useContext(AuthContext);
   console.log("NavBar.jsx", user);

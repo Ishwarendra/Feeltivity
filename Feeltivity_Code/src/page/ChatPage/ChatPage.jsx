@@ -18,7 +18,7 @@ export default function ChatPage() {
   const [messageInBox, setMessageInBox] = useState("");
   const [sendButtonDisabled, setSendButtonDisabled] = useState(true);
   const [chatMessages, setChatMessages] = useState([]);
-  
+ 
   // Remove Comment
   useEffect(() => {
       console.log(user, "user-change");
@@ -49,7 +49,7 @@ export default function ChatPage() {
           messages.push(doc.data());
         })
         setChatMessages(messages);
-      // console.log(chatMessages);
+      console.log(messages);
     })
   }
   },[]);

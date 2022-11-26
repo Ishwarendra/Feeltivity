@@ -3,7 +3,13 @@ import { Avatar, Button } from "@mui/material";
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "./../../assets/image/logo.png";
-import { updateDoc, doc, collection, deleteDoc,onSnapshot } from "firebase/firestore";
+import {
+  updateDoc,
+  doc,
+  collection,
+  deleteDoc,
+  onSnapshot,
+} from "firebase/firestore";
 import { db, auth } from "../../firebase-config";
 import { AuthContext } from "../../contexts/auth";
 import { signOut } from "firebase/auth";
@@ -11,34 +17,33 @@ import { lightBlue } from "@mui/material/colors";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const curr_user=auth.currentUser?.uid;
-  const [msgs,setMsgs]=useState([]);
+  const curr_user = auth.currentUser?.uid;
+  const [msgs, setMsgs] = useState([]);
   const handleSignout = async () => {
     await updateDoc(doc(db, "users", auth.currentUser?.uid), {
       isOnline: false,
     });
-    if(curr_user){
-      const chatCollectionRef=collection(db,'messages',curr_user,'chats');
-      let messages=[];
-    onSnapshot(chatCollectionRef,(snap)=>{
-      snap.forEach((doc)=>{
-        messages.push({...doc.data(),id: doc.id});
-      })
-      setMsgs(messages);
-      // console.log(messages,'messages');
-      // console.log(messages,'cm')
-      console.log(messages[0],messages[0]?.id)
-  messages.forEach((msg)=>{
-    // console.log(111111);
-    const handleDel=async()=>{
-      const chatDocRef=doc(db,'messages',curr_user,'chats',msg.id);
-      await deleteDoc(chatDocRef);
-      }
-    handleDel();
-  })
-  })
-    
-  }
+    if (curr_user) {
+      const chatCollectionRef = collection(db, "messages", curr_user, "chats");
+      let messages = [];
+      onSnapshot(chatCollectionRef, (snap) => {
+        snap.forEach((doc) => {
+          messages.push({ ...doc.data(), id: doc.id });
+        });
+        setMsgs(messages);
+        // console.log(messages,'messages');
+        // console.log(messages,'cm')
+        console.log(messages[0], messages[0]?.id);
+        messages.forEach((msg) => {
+          // console.log(111111);
+          const handleDel = async () => {
+            const chatDocRef = doc(db, "messages", curr_user, "chats", msg.id);
+            await deleteDoc(chatDocRef);
+          };
+          handleDel();
+        });
+      });
+    }
     signOut(auth);
     navigate("/login");
   };
@@ -54,11 +59,19 @@ const Navbar = () => {
       {/* LOGO: goto Home */}
       <div className="block">
         <Link to="/">
-          <img src={logo} alt="Feeltivity logo" className="h-[70px] w-[70px]" />
+          <div className="flex">
+            <img
+              src={logo}
+              alt="Feeltivity logo"
+              className="h-[70px] w-[70px]"
+            />
+            <div className="uppercase text-lg font-semibold self-center bg-[#edfdfd] p-2 rounded-lg text-[#0fc9f2]">
+              Feeltivity
+            </div>
+          </div>
         </Link>
       </div>
 
-      
       {/* Empty so it takes up space*/}
       <div className="hidden sm:block"></div>
 

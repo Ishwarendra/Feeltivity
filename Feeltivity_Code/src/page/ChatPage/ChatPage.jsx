@@ -41,7 +41,7 @@ export default function ChatPage() {
     return IST
   }
 
-  const makeChatMessageJSX = (msg, sentTime, human) => {
+  const makeChatMessageJSX = (msg, sentTime, human, key = null) => {
     return (
       <div className="grid grid-cols-1 place-items-end hover:bg-gray-200 p-[2px]">
         <ChatMessage msg={msg} human={human} sentTime={sentTime} />
@@ -101,17 +101,19 @@ export default function ChatPage() {
       <div className="p-1 sm:p-5 md:px-5 py-5">
         {/* Bottom has a chat button */}
         <div className="h-[70vh] overflow-auto">
-          {chatMessages?.map((msg) =>
+          {chatMessages?.map((msg, key) =>
             curr_user === msg.from
               ? makeChatMessageJSX(
                   msg.message,
                   unixToIST(msg.SentAt.toDate()),
-                  true
+                  true,
+                  key
                 )
               : makeChatMessageJSX(
                   msg.message,
                   unixToIST(msg.SentAt.toDate()),
-                  false
+                  false,
+                  key
                 )
           )}
         </div>

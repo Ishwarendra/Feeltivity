@@ -6,7 +6,8 @@ const data = [
         socialLinks: [
             '#',
             'https://github.com/adil19-net'
-        ]
+        ],
+        direction: 'left',
     },
 
     {
@@ -16,7 +17,8 @@ const data = [
         socialLinks: [
             'https://www.linkedin.com/in/ishwarendra-jha-900545202/',
             'https://github.com/Ishwarendra',
-        ]
+        ],
+        direction: 'right',
     },
 
     {
@@ -26,7 +28,8 @@ const data = [
         socialLinks: [
             '#', 
             '#'
-        ]
+        ],
+        direction: 'left',
     },
     
     {
@@ -36,7 +39,8 @@ const data = [
         socialLinks: [
             '#', 
             'https://github.com/Tech-Suvidhi/'
-        ]
+        ],
+        direction: 'right',
     }
 ]
 

@@ -5,7 +5,8 @@ import { auth, db } from "../../firebase-config";
 import { setDoc, doc, Timestamp } from "firebase/firestore";
 
 import { Button, TextField } from "@mui/material";
-import logo from "./../../assets/image/logo.ico";
+import logo from "./../../assets/image/logo.png";
+import register_big from "./../../assets/image/register_img_big.png";
 import GoogleIcon from "@mui/icons-material/Google";
 
 export default function Register() {
@@ -74,7 +75,7 @@ export default function Register() {
       <div className="text-center mx-[10%] flex flex-col justify-around">
         <div className="grid grid-cols-1 mx-[5%] sm:mx-[5%] md:mx-[15%]">
           <div className="grid grid-cols-3 place-items-center place-content-center m-auto">
-            <img src={logo} alt="" className="contain m-auto" />
+            <img src={logo} alt="" className="contain m-auto h-[70px] w-[70px]" />
             <div className="text-4xl uppercase mt-5 mb-1 col-span-2">hello!</div>
           </div>
           <div className="font-semibold col-span-2">
@@ -147,8 +148,11 @@ export default function Register() {
       </div>
 
       {/* Right Side */}
-      <div className="hidden h-[100vh] bg-[#2d5abf] sm:block">
-        <div className="text-white font-semibold">
+      <div className="hidden h-[100vh] bg-[#2d5abf] sm:flex  flex-col justify-center">
+        <div>
+          <img src={register_big} alt="" />
+        </div>
+        <div className="text-white font-semibold text-center">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, tempore?
         </div>
       </div>

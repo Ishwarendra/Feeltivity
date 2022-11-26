@@ -4,7 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { auth, db } from "../../firebase-config";
 
 import { Button, TextField } from "@mui/material";
-import logo from "./../../assets/image/logo.ico";
+import logo from "./../../assets/image/logo.png";
+import logo_big from "./../../assets/image/logo_big.png";
 import GoogleIcon from "@mui/icons-material/Google";
 
 export default function Login() {
@@ -46,7 +47,7 @@ export default function Login() {
 
       {/* Left Side */}
       <div className="hidden h-[100vh] bg-[#2d5abf] sm:text-center sm:align-middle sm:flex sm:flex-col justify-center"> 
-        <div className="flex justify-center mb-11"><img src={logo} alt="" className="" /></div>
+        <div className="flex justify-center"><img src={logo_big} alt="" className="h-[300px] w-[300px]" /></div>
         <div className="bold text-white text-6xl uppercase">Feeltivity</div>
         <div className="text-white font-semibold">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, tempore?
@@ -55,7 +56,7 @@ export default function Login() {
 
       <div className="text-center mx-[10%] flex flex-col justify-evenly">
         <div className="block">
-          <img src={logo} alt="" className="cover m-auto" />
+          <img src={logo} alt="" className="cover m-auto h-[80px] w-[80px]" />
           <div className="text-4xl uppercase mt-5 mb-1">hello!</div>
           <div>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea,

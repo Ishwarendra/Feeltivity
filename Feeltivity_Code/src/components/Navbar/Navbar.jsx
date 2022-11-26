@@ -2,7 +2,7 @@ import { LogoutRounded } from "@mui/icons-material";
 import { Avatar, Button } from "@mui/material";
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import logo from "./../../assets/image/logo.ico";
+import logo from "./../../assets/image/logo.png";
 import { updateDoc, doc, collection, deleteDoc,onSnapshot } from "firebase/firestore";
 import { db, auth } from "../../firebase-config";
 import { AuthContext } from "../../contexts/auth";
@@ -54,7 +54,7 @@ const Navbar = () => {
       {/* LOGO: goto Home */}
       <div className="block">
         <Link to="/">
-          <img src={logo} alt="Feeltivity logo" />
+          <img src={logo} alt="Feeltivity logo" className="h-[70px] w-[70px]" />
         </Link>
       </div>
 

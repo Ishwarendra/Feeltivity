@@ -15,7 +15,7 @@ import {
   query,
 } from "firebase/firestore";
 
-import {getEmotionFromList} from './../../emotion_identification/emotion_utils.js';
+// import {getEmotionFromList} from './../../emotion_identification/emotion_utils.js';
 
 // something firing after any edit in text box
 

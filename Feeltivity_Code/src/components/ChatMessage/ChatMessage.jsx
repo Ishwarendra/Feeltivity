@@ -3,7 +3,7 @@ import React from "react";
 
 // H = HUMAN and C = CHATBOT
 
-export const ChatMessage = ({ msg, human, sentTime }) => {
+export const ChatMessage = ({ msg, human = false, sentTime }) => {
   var unCommonClass = "";
   if (human) {
     unCommonClass = "bg-[#4765ff] text-white rounded-tr-lg rounded-l-lg";

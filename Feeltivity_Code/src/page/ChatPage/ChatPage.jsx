@@ -57,16 +57,17 @@ export default function ChatPage() {
 
   const sendMessage = async(e) => {
     e.preventDefault();
-    setChatMessages([
-      ...chatMessages,
-      [messageInBox, "11:45 PM", true],
-    ]);
+    // setChatMessages([
+    //   ...chatMessages,
+    //   [messageInBox, "11:45 PM", true],
+    // ]);
     const chatCollectionRef=collection(db,'messages',curr_user,'chats');
     await addDoc(chatCollectionRef,{
       message:messageInBox,
       from:curr_user,
       SentAt: Timestamp.fromDate(new Date())
     })
+    
 
     // const q=query(chatCollectionRef,orderBy('SentAt','asc'));
     // onSnapshot(q,(snap)=>{
@@ -90,8 +91,10 @@ export default function ChatPage() {
         <div className="h-[70vh] overflow-auto">
 
           {chatMessages?.map(msg => (
-            (curr_user == msg.from) ? makeChatMessageJSX(msg.message, "11:45",true): makeChatMessageJSX(msg.message, "11:45",false)
-          ))}
+            (curr_user == msg.from) ? makeChatMessageJSX(msg.message,msg.SentAt.toDate().getTime().toString() ,true): makeChatMessageJSX(msg.message,msg.SentAt.toDate().getTime().toString(),false)
+          ))
+        }
+          
 
         </div>
 

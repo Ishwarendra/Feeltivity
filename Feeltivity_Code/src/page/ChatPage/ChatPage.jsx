@@ -93,12 +93,12 @@ export default function ChatPage() {
   };
 
   return (
-    <div className="bg-[#f4f4f9] h-screen">
+    <div className="bg-[#202938] h-screen">
       <div>
         <Navbar />
       </div>
 
-      <div className="p-1 sm:p-5 md:px-5 py-5">
+      <div className="p-1 sm:p-5 md:px-5 py-5 border-2 mx-2 mt-2 bg-[#f4f4f9]">
         {/* Bottom has a chat button */}
         <div className="h-[70vh] overflow-auto">
           {chatMessages?.map((msg, key) =>

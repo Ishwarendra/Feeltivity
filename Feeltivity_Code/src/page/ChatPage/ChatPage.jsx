@@ -6,68 +6,77 @@ import { AuthContext } from "../../contexts/auth";
 import { ChatMessage } from "../../components/ChatMessage/ChatMessage";
 import { Button, TextField } from "@mui/material";
 import SendRoundedIcon from "@mui/icons-material/SendRounded";
-import { addDoc, collection, onSnapshot, orderBy, Timestamp,query } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  onSnapshot,
+  orderBy,
+  Timestamp,
+  query,
+} from "firebase/firestore";
 
 // something firing after any edit in text box
 
 export default function ChatPage() {
   const navigate = useNavigate();
   const user = useContext(AuthContext);
-  const curr_user=auth.currentUser?.uid;
-  const [time,setTime]=useState('');
+  const curr_user = auth.currentUser?.uid;
+  const [time, setTime] = useState("");
   const [messageInBox, setMessageInBox] = useState("");
   const [sendButtonDisabled, setSendButtonDisabled] = useState(true);
   const [chatMessages, setChatMessages] = useState([]);
- 
-  // Remove Comment
-  useEffect(() => {
-      console.log(user, "user-change");
-      if (!user.user) {
-          navigate("/login");
-        }
-      }, [user, navigate]);
 
-    
+  useEffect(() => {
+    console.log(user, "user-change");
+    if (!user.user) {
+      navigate("/login");
+    }
+  }, [user, navigate]);
+
+  // unix to IST
+  const unixToIST = (unix_time) => {
+    let IST = `${unix_time.getHours()}:${unix_time.getMinutes()}`
+    console.log(IST)
+    return IST
+  }
+
   const makeChatMessageJSX = (msg, sentTime, human) => {
     return (
       <div className="grid grid-cols-1 place-items-end hover:bg-gray-200 p-[2px]">
-        <ChatMessage
-          msg={msg}
-          human={human}
-          sentTime={sentTime}
-        />
+        <ChatMessage msg={msg} human={human} sentTime={sentTime} />
       </div>
     );
   };
 
-  useEffect(()=>{
-    if(curr_user){
-      const chatCollectionRef=collection(db,'messages',curr_user,'chats');
-      const q=query(chatCollectionRef,orderBy('SentAt','asc'));
-      onSnapshot(q,(snap)=>{
-        let messages=[];
-        snap.forEach((doc)=>{
+  // Add new Message
+  useEffect(() => {
+    if (curr_user) {
+      const chatCollectionRef = collection(db, "messages", curr_user, "chats");
+      const q = query(chatCollectionRef, orderBy("SentAt", "asc"));
+      onSnapshot(q, (snap) => {
+        let messages = [];
+        snap.forEach((doc) => {
           messages.push(doc.data());
-        })
+        });
         setChatMessages(messages);
-      // console.log(messages);
-    })
-  }
-  },[]);
+        // console.log(messages);
+      });
+    }
+  }, []);
 
-  const sendMessage = async(e) => {
+  // Send new message
+  const sendMessage = async (e) => {
     e.preventDefault();
     // setChatMessages([
     //   ...chatMessages,
     //   [messageInBox, "11:45 PM", true],
     // ]);
-    const chatCollectionRef=collection(db,'messages',curr_user,'chats');
-    await addDoc(chatCollectionRef,{
-      message:messageInBox,
-      from:curr_user,
-      SentAt: Timestamp.fromDate(new Date())
-    })
-    
+    const chatCollectionRef = collection(db, "messages", curr_user, "chats");
+    await addDoc(chatCollectionRef, {
+      message: messageInBox,
+      from: curr_user,
+      SentAt: Timestamp.fromDate(new Date()),
+    });
 
     // const q=query(chatCollectionRef,orderBy('SentAt','asc'));
     // onSnapshot(q,(snap)=>{
@@ -77,7 +86,7 @@ export default function ChatPage() {
     //   })
     //   console.log(messages);
     // })
-    setMessageInBox('');
+    setMessageInBox("");
   };
 
   return (
@@ -89,19 +98,25 @@ export default function ChatPage() {
       <div className="p-1 sm:p-5 md:px-5 py-5">
         {/* Bottom has a chat button */}
         <div className="h-[70vh] overflow-auto">
-
-          {chatMessages?.map(msg => (
-            (curr_user == msg.from) ? makeChatMessageJSX(msg.message,msg.SentAt.toDate().getTime().toString() ,true): makeChatMessageJSX(msg.message,msg.SentAt.toDate().getTime().toString(),false)
-          ))
-        }
-          
-
+          {chatMessages?.map((msg) =>
+            curr_user == msg.from
+              ? makeChatMessageJSX(
+                  msg.message,
+                  unixToIST(msg.SentAt.toDate()),
+                  true
+                )
+              : makeChatMessageJSX(
+                  msg.message,
+                  unixToIST(msg.SentAt.toDate()),
+                  false
+                )
+          )}
         </div>
 
         {/* Message Box */}
         <form className="mt-2 flex" onSubmit={(e) => console.log("shjs", e)}>
           <TextField
-            type='reset'
+            type="reset"
             placeholder="Type Something ... "
             multiline
             fullWidth
@@ -119,7 +134,7 @@ export default function ChatPage() {
               disabled={sendButtonDisabled}
               sx={{ color: "#3b5bff", py: 1.5 }}
               onClick={sendMessage}
-              type='submit'
+              type="submit"
             >
               <SendRoundedIcon sx={{ color: "white" }} />
             </Button>

@@ -19,27 +19,29 @@ const Navbar = () => {
     });
     if(curr_user){
       const chatCollectionRef=collection(db,'messages',curr_user,'chats');
-    onSnapshot(chatCollectionRef,(snap)=>{
       let messages=[];
+    onSnapshot(chatCollectionRef,(snap)=>{
       snap.forEach((doc)=>{
         messages.push({...doc.data(),id: doc.id});
       })
       setMsgs(messages);
-      console.log(messages,'messages');
-      // console.log(msgs,'cm')
-
+      // console.log(messages,'messages');
+      // console.log(messages,'cm')
+      console.log(messages[0],messages[0]?.id)
+  messages.forEach((msg)=>{
+    console.log(111111);
+    const handleDel=async()=>{
+      const chatDocRef=doc(db,'messages',curr_user,'chats',msg.id);
+      await deleteDoc(chatDocRef);
+      }
+    handleDel();
   })
-  }
+  })
   
-  // console.log(msgs,'cm')
-  msgs?.map(async (msg)=>{
-    const chatDocRef=doc(db,'messages',curr_user,'chats',msg.id);
-    console.log(msg.id);
-    await deleteDoc(chatDocRef);
-
-  })
+  
+  
     
-
+  }
     signOut(auth);
     navigate("/login");
   };

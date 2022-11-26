@@ -1,6 +1,13 @@
 import React from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import { ProfileCard } from "../../components/ProfileCard/ProfileCard";
+import aboutUsData from "./../../assets/data/aboutUsData.js";
+import Adil from './../../assets/image/Adil Vinayak.png'
+import Ishwarendra from './../../assets/image/Ishwarendra Jha.png'
+import Shiraz from './../../assets/image/Shiraz Mangat.png'
+import Suvidhi from './../../assets/image/Suvidhi.png'
+
+const images = [Adil, Ishwarendra, Shiraz, Suvidhi]
 
 export default function AboutUs() {
   return (
@@ -11,19 +18,20 @@ export default function AboutUs() {
 
       <div className="font-bold text-4xl text-white p-5">Meet our team</div>
 
-      <div className="grid grid-cols-2 place-items-center">
-        <div className="w-auto h-auto m-5">
-          <ProfileCard
-            name="Dummy Name"
-            subtitle="Dummy Subtitle"
-            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum facere ducimus expedita quibusdam vero obcaecati dolorem?"
-            socialLinks={["#", "#"]}
-          />
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 place-items-center">
+        {
+          aboutUsData?.map((person, key) => (
+            <div key = {key}>
+            <ProfileCard
+              name={person.name}
+              subtitle={person.subtitle}
+              content={person.content}
+              socialLinks={person.socialLinks}
+              profileImg={images[key]}
+            />
           </div>
-
-          <div><ProfileCard /></div>
-          <div><ProfileCard /></div>
-          <div><ProfileCard /></div>
+          ))
+        }
       </div>
     </div>
   );

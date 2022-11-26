@@ -15,6 +15,8 @@ import {
   query,
 } from "firebase/firestore";
 
+import {getEmotionFromList} from './../../emotion_identification/emotion_utils.js';
+
 // something firing after any edit in text box
 
 export default function ChatPage() {
@@ -86,6 +88,8 @@ export default function ChatPage() {
     //   })
     //   console.log(messages);
     // })
+    // PRINTING TO SEE EMOTION FOR EACH TEXT
+    // console.log("Emotion related to" + messageInBox + "are:\n", getEmotionFromList(messageInBox)); 
     setMessageInBox("");
   };
 
@@ -99,7 +103,7 @@ export default function ChatPage() {
         {/* Bottom has a chat button */}
         <div className="h-[70vh] overflow-auto">
           {chatMessages?.map((msg) =>
-            curr_user == msg.from
+            curr_user === msg.from
               ? makeChatMessageJSX(
                   msg.message,
                   unixToIST(msg.SentAt.toDate()),

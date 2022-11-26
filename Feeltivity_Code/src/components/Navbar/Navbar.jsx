@@ -37,9 +37,6 @@ const Navbar = () => {
     handleDel();
   })
   })
-  
-  
-  
     
   }
     signOut(auth);
@@ -102,7 +99,7 @@ const Navbar = () => {
           alt="Remy Sharp"
           src="/broken-image.jpg"
         >
-          B
+          I
         </Avatar>
       </div>
     </div>

@@ -1,17 +1,20 @@
 import React, { useState, useEffect, useContext } from "react";
 import Navbar from "../../components/Navbar/Navbar";
-import { auth } from "../../firebase-config";
+import { auth, db } from "../../firebase-config";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/auth";
 import { ChatMessage } from "../../components/ChatMessage/ChatMessage";
 import { Button, TextField } from "@mui/material";
 import SendRoundedIcon from "@mui/icons-material/SendRounded";
+import { addDoc, collection, Timestamp } from "firebase/firestore";
 
 // something firing after any edit in text box
 
 export default function ChatPage() {
   const navigate = useNavigate();
   const user = useContext(AuthContext);
+  const curr_user=auth.currentUser.uid;
+  const [time,setTime]=useState('');
   const [messageInBox, setMessageInBox] = useState("");
   const [sendButtonDisabled, setSendButtonDisabled] = useState(true);
   const [chatMessages, setChatMessages] = useState([]);
@@ -36,13 +39,19 @@ export default function ChatPage() {
     );
   };
 
-  const sendMessage = (e) => {
+  const sendMessage = async(e) => {
     e.preventDefault();
     setChatMessages([
       ...chatMessages,
       [messageInBox, "11:45 PM", true],
     ]);
-    
+    const chatCollectionRef=collection(db,'messages',curr_user,'chats');
+    await addDoc(chatCollectionRef,{
+      message:messageInBox,
+      from:curr_user,
+      SentAt: Timestamp.fromDate(new Date())
+    })
+
     setMessageInBox('');
   };
 

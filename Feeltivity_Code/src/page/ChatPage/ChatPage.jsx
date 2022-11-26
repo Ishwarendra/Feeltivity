@@ -29,7 +29,7 @@ export default function ChatPage() {
   const [chatMessages, setChatMessages] = useState([]);
 
   useEffect(() => {
-    console.log(user, "user-change");
+    // console.log(user, "user-change");
     if (!user.user) {
       navigate("/login");
     }
@@ -38,7 +38,6 @@ export default function ChatPage() {
   // unix to IST
   const unixToIST = (unix_time) => {
     let IST = `${unix_time.getHours()}:${unix_time.getMinutes()}`
-    console.log(IST)
     return IST
   }
 

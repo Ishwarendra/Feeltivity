@@ -26,8 +26,8 @@ export default function ChatPage() {
           navigate("/login");
         }
       }, [user, navigate]);
-    const chatCollectionRef=collection(db,'messages',curr_user,'chats');
-      
+
+    
   const makeChatMessageJSX = (msg, sentTime, human) => {
     return (
       <div className="grid grid-cols-1 place-items-end hover:bg-gray-200 p-[2px]">
@@ -42,6 +42,7 @@ export default function ChatPage() {
 
   useEffect(()=>{
     if(curr_user){
+      const chatCollectionRef=collection(db,'messages',curr_user,'chats');
       const q=query(chatCollectionRef,orderBy('SentAt','asc'));
       onSnapshot(q,(snap)=>{
         let messages=[];
@@ -60,7 +61,7 @@ export default function ChatPage() {
       ...chatMessages,
       [messageInBox, "11:45 PM", true],
     ]);
-    
+    const chatCollectionRef=collection(db,'messages',curr_user,'chats');
     await addDoc(chatCollectionRef,{
       message:messageInBox,
       from:curr_user,

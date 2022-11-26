@@ -49,7 +49,7 @@ export default function ChatPage() {
           messages.push(doc.data());
         })
         setChatMessages(messages);
-      console.log(messages);
+      // console.log(messages);
     })
   }
   },[]);

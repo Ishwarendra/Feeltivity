@@ -13,7 +13,7 @@ import { addDoc, collection, Timestamp } from "firebase/firestore";
 export default function ChatPage() {
   const navigate = useNavigate();
   const user = useContext(AuthContext);
-  const curr_user=auth.currentUser.uid;
+  const curr_user=auth.currentUser?.uid;
   const [time,setTime]=useState('');
   const [messageInBox, setMessageInBox] = useState("");
   const [sendButtonDisabled, setSendButtonDisabled] = useState(true);

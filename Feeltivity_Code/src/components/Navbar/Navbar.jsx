@@ -29,7 +29,7 @@ const Navbar = () => {
       // console.log(messages,'cm')
       console.log(messages[0],messages[0]?.id)
   messages.forEach((msg)=>{
-    console.log(111111);
+    // console.log(111111);
     const handleDel=async()=>{
       const chatDocRef=doc(db,'messages',curr_user,'chats',msg.id);
       await deleteDoc(chatDocRef);

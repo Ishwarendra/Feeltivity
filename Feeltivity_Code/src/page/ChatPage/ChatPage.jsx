@@ -1,29 +1,33 @@
 import React, { useState, useEffect, useContext } from "react";
 import Navbar from "../../components/Navbar/Navbar";
-import { auth } from "../../firebase-config";
+import { auth, db } from "../../firebase-config";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/auth";
 import { ChatMessage } from "../../components/ChatMessage/ChatMessage";
 import { Button, TextField } from "@mui/material";
 import SendRoundedIcon from "@mui/icons-material/SendRounded";
+import { addDoc, collection, onSnapshot, orderBy, Timestamp,query } from "firebase/firestore";
 
 // something firing after any edit in text box
 
 export default function ChatPage() {
   const navigate = useNavigate();
   const user = useContext(AuthContext);
+  const curr_user=auth.currentUser?.uid;
+  const [time,setTime]=useState('');
   const [messageInBox, setMessageInBox] = useState("");
   const [sendButtonDisabled, setSendButtonDisabled] = useState(true);
   const [chatMessages, setChatMessages] = useState([]);
-
+  
   // Remove Comment
-  // useEffect(() => {
-  //   console.log(user, "user-change");
-  //   if (!user.user) {
-  //     navigate("/login");
-  //   }
-  // }, [user, navigate]);
-
+  useEffect(() => {
+      console.log(user, "user-change");
+      if (!user.user) {
+          navigate("/login");
+        }
+      }, [user, navigate]);
+    const chatCollectionRef=collection(db,'messages',curr_user,'chats');
+      
   const makeChatMessageJSX = (msg, sentTime, human) => {
     return (
       <div className="grid grid-cols-1 place-items-end hover:bg-gray-200 p-[2px]">
@@ -36,13 +40,41 @@ export default function ChatPage() {
     );
   };
 
-  const sendMessage = (e) => {
+  useEffect(()=>{
+    if(curr_user){
+      const q=query(chatCollectionRef,orderBy('SentAt','asc'));
+      onSnapshot(q,(snap)=>{
+        let messages=[];
+        snap.forEach((doc)=>{
+          messages.push(doc.data());
+        })
+        setChatMessages(messages);
+      // console.log(chatMessages);
+    })
+  }
+  },[]);
+
+  const sendMessage = async(e) => {
     e.preventDefault();
     setChatMessages([
       ...chatMessages,
       [messageInBox, "11:45 PM", true],
     ]);
     
+    await addDoc(chatCollectionRef,{
+      message:messageInBox,
+      from:curr_user,
+      SentAt: Timestamp.fromDate(new Date())
+    })
+
+    // const q=query(chatCollectionRef,orderBy('SentAt','asc'));
+    // onSnapshot(q,(snap)=>{
+    //   let messages=[];
+    //   snap.forEach((doc)=>{
+    //     messages.push(doc.data());
+    //   })
+    //   console.log(messages);
+    // })
     setMessageInBox('');
   };
 
@@ -57,7 +89,7 @@ export default function ChatPage() {
         <div className="h-[70vh] overflow-auto">
 
           {chatMessages?.map(msg => (
-            makeChatMessageJSX(msg[0], msg[1], msg[2])
+            (curr_user == msg.from) ? makeChatMessageJSX(msg.message, "11:45",true): makeChatMessageJSX(msg.message, "11:45",false)
           ))}
 
         </div>

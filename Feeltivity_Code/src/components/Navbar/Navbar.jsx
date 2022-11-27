@@ -57,7 +57,7 @@ const Navbar = () => {
   // console.log("NavBar.jsx", user);
 
   return (
-    <div className="grid grid-cols-4 gap-5 justify-evenly align-middle place-items-stretch pl-10 bg-green-100">
+    <div className="grid grid-cols-3 md:grid-cols-4 gap-5 justify-evenly align-middle place-items-stretch pl-10 bg-green-100">
       {/* LOGO: goto Home */}
       <div className="block">
         <Link to="/">
@@ -75,7 +75,7 @@ const Navbar = () => {
       </div>
 
       {/* Empty so it takes up space*/}
-      <div className="hidden sm:block"></div>
+      <div className="hidden md:block"></div>
 
       {/* ChatPage, AboutUs */}
       <div className="grid grid-cols-3 place-items-center">

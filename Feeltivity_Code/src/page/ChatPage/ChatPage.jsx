@@ -16,6 +16,10 @@ import {
   query,
   doc,
 } from "firebase/firestore";
+import chatBotResponses, {
+  emotionsArray,
+} from "./../../assets/data/chatBotResponses.js";
+import { getRandomElementFromArray } from "./../../utility_functions/randomFunctions.js";
 
 // import {getEmotionFromList} from './../../emotion_identification/emotion_utils.js';
 
@@ -31,7 +35,6 @@ export default function ChatPage() {
   const [chatMessages, setChatMessages] = useState([]);
 
   useEffect(() => {
-    console.log(user, "user-change");
     if (!user.user) {
       navigate("/login");
     }
@@ -46,15 +49,15 @@ export default function ChatPage() {
   const makeChatMessageJSX = (msg, sentTime, human, key = null) => {
     var positionClass = "";
     if (human) {
-      positionClass = "place-items-end"
+      positionClass = "place-items-end";
     } else {
-      positionClass= "place-items-start"
+      positionClass = "place-items-start";
     }
 
     return (
       <div
         key={key}
-        className= {`grid grid-cols-1 ${positionClass} hover:bg-gray-200 p-[2px] rounded-lg`}
+        className={`grid grid-cols-1 ${positionClass} hover:bg-gray-200 p-[2px] rounded-lg`}
       >
         <ChatMessage msg={msg} human={human} sentTime={sentTime} />
       </div>
@@ -63,13 +66,14 @@ export default function ChatPage() {
 
   // API Call
   const axiosCall = (msg) => {
-    console.log("inside axiosCall", msg);
+    console.log("inside axiosCall", msg, getRandomElementFromArray(chatBotResponses[emotionsArray[0]]));
     const api_url = `http://127.0.0.1:8000/emotion`;
 
     Axios.post(api_url, {
       text: msg,
     }).then((response) => {
       // got data here
+      console.log("hohohoh");
       var emotions = [
         response.data.Happy,
         response.data.Sad,
@@ -78,30 +82,34 @@ export default function ChatPage() {
         response.data.Surprise,
       ];
 
-      var chatBotResponse = [
-        "Happy I am",
-        "Sad I am",
-        "Angry I am",
-        "Fear I am",
-        "Surprised I am",
-      ];
-
       var max_emotion = Math.max(...emotions);
-
+      // console.log(max_emotion)
       for (let i = 0; i < emotions.length; i++) {
         if (emotions[i] === max_emotion) {
-          console.log(chatBotResponse[i])
+          // console.log(
+          //   getRandomElementFromArray(chatBotResponses[emotionsArray[i]]),
+          // );
 
-          const chatCollectionRef = collection(db, "messages", curr_user, "chats");
-          const addChatbotResp=async()=>{
-            await addDoc(chatCollectionRef,{
-              message: chatBotResponse[i],
-              from: 'Chat-bot',
-              SentAt: Timestamp.fromDate(new Date())
-            });
-          }
-          addChatbotResp();
-          return chatBotResponse[i];
+          try {
+            const chatCollectionRef = collection(
+              db,
+              "messages",
+              curr_user,
+              "chats"
+            );
+            const addChatbotResp = async () => {
+              await addDoc(chatCollectionRef, {
+                message: getRandomElementFromArray(
+                  chatBotResponses[emotionsArray[i]]
+                ),
+                from: "Chat-bot",
+                SentAt: Timestamp.fromDate(new Date()),
+              });
+            };
+
+            addChatbotResp();
+          } catch {}
+          return chatBotResponses[emotionsArray[i]];
         }
       }
 
@@ -132,16 +140,20 @@ export default function ChatPage() {
     //   ...chatMessages,
     //   [messageInBox, "11:45 PM", true],
     // ]);
-    const chatCollectionRef = collection(db, "messages", curr_user, "chats");
-    await addDoc(chatCollectionRef, {
-      message: messageInBox,
-      from: curr_user,
-      SentAt: Timestamp.fromDate(new Date())
-    });
+    axiosCall(messageInBox);
+    try {
+      const chatCollectionRef = collection(db, "messages", curr_user, "chats");
+      await addDoc(chatCollectionRef, {
+        message: messageInBox,
+        from: curr_user,
+        SentAt: Timestamp.fromDate(new Date()),
+      });
+    } catch {
+      console.log("SomeFirebase in chatpage.jsx at Line: 152");
+    }
 
-    // TODO: Add chatbot reply in database
-    var chatBotReply = axiosCall(messageInBox);
-    console.log("chatBotReply: ", chatBotReply)
+    setMessageInBox("");
+
     // setChatMessages( [makeChatMessageJSX(chatBotReply, "12:22", false)], ...chatMessages )
 
     // const q=query(chatCollectionRef,orderBy('SentAt','asc'));
@@ -154,9 +166,7 @@ export default function ChatPage() {
     // })
     // PRINTING TO SEE EMOTION FOR EACH TEXT
     // console.log("Emotion related to" + messageInBox + "are:\n", getEmotionFromList(messageInBox));
-    setMessageInBox("");
   };
-
 
   return (
     <div className="bg-[#202938] h-screen">

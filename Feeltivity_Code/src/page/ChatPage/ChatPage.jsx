@@ -14,6 +14,7 @@ import {
   orderBy,
   Timestamp,
   query,
+  doc,
 } from "firebase/firestore";
 
 // import {getEmotionFromList} from './../../emotion_identification/emotion_utils.js';
@@ -83,6 +84,15 @@ export default function ChatPage() {
       for (let i = 0; i < emotions.length; i++) {
         if (emotions[i] === max_emotion) {
           console.log(chatBotResponse[i])
+          const chatCollectionRef = collection(db, "messages", curr_user, "chats");
+          const addChatbotResp=async()=>{
+            await addDoc(chatCollectionRef,{
+              message: chatBotResponse[i],
+              from: 'Chat-bot',
+              SentAt: Timestamp.fromDate(new Date())
+            });
+          }
+          addChatbotResp();
           return chatBotResponse[i];
         }
       }
@@ -118,7 +128,7 @@ export default function ChatPage() {
     await addDoc(chatCollectionRef, {
       message: messageInBox,
       from: curr_user,
-      SentAt: Timestamp.fromDate(new Date()),
+      SentAt: Timestamp.fromDate(new Date())
     });
 
     // TODO: Add chatbot reply in database

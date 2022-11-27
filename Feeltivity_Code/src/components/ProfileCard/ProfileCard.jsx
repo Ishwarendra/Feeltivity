@@ -34,10 +34,10 @@ export const ProfileCard = ({
 
         <div className="mb-4 mt-2 flex">
           <div className='mr-1'>
-            <Link to={socialLinks[0]}><LinkedInIcon sx={{ color: "#9ca2ae" }} /></Link>
+            <a href={socialLinks[0]}><LinkedInIcon sx={{ color: "#9ca2ae" }} /></a>
           </div>
           <div className='ml-1'>
-            <Link to={socialLinks[1]}><GitHubIcon sx={{ color: "#9ca2ae" }} /></Link>
+            <a href={socialLinks[1]}><GitHubIcon sx={{ color: "#9ca2ae" }} /></a>
           </div>
         </div>
       </div>

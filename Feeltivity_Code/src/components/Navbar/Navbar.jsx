@@ -57,7 +57,7 @@ const Navbar = () => {
   // console.log("NavBar.jsx", user);
 
   return (
-    <div className="grid grid-cols-3 md:grid-cols-4 gap-5 justify-evenly align-middle place-items-stretch pl-10 bg-green-100">
+    <div className="grid grid-cols-3 md:grid-cols-4 gap-5 justify-evenly align-middle place-items-stretch pl-10 bg-blue-800">
       {/* LOGO: goto Home */}
       <div className="block">
         <Link to="/">
@@ -67,7 +67,7 @@ const Navbar = () => {
               alt="Feeltivity logo"
               className="h-[70px] w-[70px]"
             />
-            <div className="uppercase text-lg font-semibold self-center bg-[#edfdfd] p-2 rounded-lg text-[#0fc9f2]">
+            <div className="uppercase text-lg font-bold self-center bg-[#edfdfd] p-2 rounded-lg text-[#0fc9f2]">
               Feeltivity
             </div>
           </div>
@@ -78,7 +78,7 @@ const Navbar = () => {
       <div className="hidden md:block"></div>
 
       {/* ChatPage, AboutUs */}
-      <div className="grid grid-cols-3 place-items-center">
+      <div className="grid grid-cols-3 place-items-center text-white">
         <Link to="/chatpage">
           <div className="hover:bg-[#edfdfd] hover:text-[#40a3b6] font-[500] px-2 py-2 rounded-lg">
             ChatPage
@@ -103,7 +103,9 @@ const Navbar = () => {
             <Button
               variant="outlined"
               endIcon={<LogoutRounded />}
-              sx={{ borderRadius: 2 }}
+              sx={{ borderRadius: 2, color: '#fff', borderColor: '#fff', borderWidth: '3px', fontWeight: 'bold', fontSize: '12px', ':hover': {
+                borderWidth: '3px'
+              } }}
               onClick={handleSignout}
             >
               Logout
@@ -115,7 +117,8 @@ const Navbar = () => {
             alt=""
             src="/broken-image.jpg"
           >
-            {user.user.email[0].toUpperCase()}
+            {/* {user.user.email[0].toUpperCase()} */}
+            I
           </Avatar>
         </div>
       )}
@@ -126,15 +129,21 @@ const Navbar = () => {
           <Link to="/login">
             <Button
               variant="contained"
-              sx={{ borderRadius: 2, backgrounColor: '#2d5abf' }}
+              sx={{ borderRadius: 2, backgroundColor: '#009EFF', ':hover': {
+                backgroundColor: '#5F9DF7',
+                fontWeight: '500'
+              } }}
             >
               LogIn
             </Button>
           </Link>
           <Link to="/register">
             <Button
-              variant="outlined"
-              sx={{ borderRadius: 2 }}
+              variant="contained"
+              sx={{ borderRadius: 2, backgroundColor: '#009EFF', ':hover': {
+                backgroundColor: '#5F9DF7',
+                fontWeight: '500'
+              } }}
             >
               SignUp
             </Button>

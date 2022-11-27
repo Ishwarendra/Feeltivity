@@ -2,12 +2,13 @@ import React from "react";
 import music_player_blue from "./../../assets/svg/music_player_blue.svg";
 import Navbar from "../../components/Navbar/Navbar";
 import SmallCard from "../../components/SmallCard/SmallCard";
-import GitHubIcon from '@mui/icons-material/GitHub';
+import GitHubIcon from "@mui/icons-material/GitHub";
 import { Link } from "react-router-dom";
+import level0DFD from "./../../assets/svg/level0_DFD.svg";
 
 export default function Home() {
   return (
-    <div>
+    <div className="bg-[#5f9df7]">
       {/* Navbar */}
       <div className="text-center">
         <Navbar />
@@ -15,11 +16,11 @@ export default function Home() {
 
       {/* Some Content (with button) | SVG */}
       {/* Some Button and more text */}
-      <div className="m-5">
-        <div className="flex text-center max-h-[70vh]">
+      <div className="p-5">
+        <div className="p-3 bg-gradient-to-r from-cyan-500 to-blue-500 shadow-2xl flex text-center max-h-[70vh]">
           <div className="flex-1 align-center m-auto">
             <div className="text-[50px] uppercase">Feeltivity</div>
-            <div className="text-md">
+            <div className="text-lg font-semibold">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit.
               Quibusdam praesentium, non enim laborum harum fuga ad.
             </div>
@@ -36,7 +37,7 @@ export default function Home() {
 
         {/* 3 points about feeltivity */}
         <div className="grid">
-          <div className="text-5xl uppercase text-center mt-10 mb-12">
+          <div className="text-5xl uppercase text-center mt-10 mb-12 underline underline-offset-8">
             some good heading
           </div>
           <div className="grid grid-cols-1 mx-[40px] sm:mx-[0] md:grid-cols-3 gap-10">
@@ -77,14 +78,29 @@ export default function Home() {
         </div>
 
         {/* Maybe add links to different diagrams and SRS */}
+        <div className="flex flex-col my-10 bg-gradient-to-r from-cyan-500 to-blue-500 shadow-2xl">
+          <div className="uppercase text-center text-[50px] underline underline-offset-8 mb-4">
+            More About Project
+          </div>
+          <div className="flex flex-col justify-center align-middle">
+            
+            <div className="self-center">
+              <img
+                src={level0DFD}
+                alt="Data Flow Diagram"
+                className="h-[60vh] w-[80vw]"
+              />
+            </div>
 
+            <div className="uppercase text-lg self-center font-semibold my-3 underline">Figure-1: Level-0 Data Flow Diagram</div>
+          </div>
+        </div>
       </div>
       {/* Footer */}
       <div className="bg-[#f6f6f6] p-3 text-center">
         @ some Copyright line
-
         <Link to="https://github.com/Ishwarendra/Feeltivity">
-          <GitHubIcon sx={{mx: 3}} />
+          <GitHubIcon sx={{ mx: 3 }} />
         </Link>
       </div>
     </div>

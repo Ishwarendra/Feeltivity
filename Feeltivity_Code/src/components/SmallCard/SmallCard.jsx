@@ -10,7 +10,7 @@ import React from 'react'
 const SmallCard = ({muiIcon, heading, content, bgColorClass, textColorClass}) => {
 
   return (
-    <div className={`grid grid-cols-1 place-items-center ${bgColorClass} ${textColorClass} rounded-xl p-6 h-[100%]`}>
+    <div className={`grid grid-cols-1 place-items-center ${bgColorClass} ${textColorClass} rounded-xl p-6 h-[100%] shadow-sm`}>
         {/* Mui Icon */}
         {/* Heading */}
         {/* Content */}

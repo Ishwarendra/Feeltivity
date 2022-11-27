@@ -170,14 +170,14 @@ export default function ChatPage() {
   };
 
   return (
-    <div className="bg-[#202938] h-screen">
+    <div className="bg-[#202938] h-screen w-screen">
       <div>
         <Navbar />
       </div>
 
-      <div className="p-1 sm:p-5 md:px-5 py-5 border-2 mx-2 mt-2 bg-[#f4f4f9]">
+      <div className="p-3 bg-[#f4f4f9] my-[20px] sm:mx-3 md:mx-5 rounded-md">
         {/* Bottom has a chat button */}
-        <div className="h-[70vh] overflow-auto">
+        <div className="h-[70vh] m-4 mb-0">
           {chatMessages?.map((msg, key) =>
             curr_user === msg.from
               ? makeChatMessageJSX(

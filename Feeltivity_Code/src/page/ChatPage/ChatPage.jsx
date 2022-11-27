@@ -44,10 +44,17 @@ export default function ChatPage() {
   };
 
   const makeChatMessageJSX = (msg, sentTime, human, key = null) => {
+    var positionClass = "";
+    if (human) {
+      positionClass = "place-items-end"
+    } else {
+      positionClass= "place-items-start"
+    }
+
     return (
       <div
         key={key}
-        className="grid grid-cols-1 place-items-end hover:bg-gray-200 p-[2px]"
+        className= {`grid grid-cols-1 ${positionClass} hover:bg-gray-200 p-[2px] rounded-lg`}
       >
         <ChatMessage msg={msg} human={human} sentTime={sentTime} />
       </div>
@@ -84,6 +91,7 @@ export default function ChatPage() {
       for (let i = 0; i < emotions.length; i++) {
         if (emotions[i] === max_emotion) {
           console.log(chatBotResponse[i])
+
           const chatCollectionRef = collection(db, "messages", curr_user, "chats");
           const addChatbotResp=async()=>{
             await addDoc(chatCollectionRef,{
@@ -148,6 +156,7 @@ export default function ChatPage() {
     // console.log("Emotion related to" + messageInBox + "are:\n", getEmotionFromList(messageInBox));
     setMessageInBox("");
   };
+
 
   return (
     <div className="bg-[#202938] h-screen">

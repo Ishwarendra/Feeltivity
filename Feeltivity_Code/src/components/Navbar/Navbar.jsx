@@ -34,6 +34,7 @@ const Navbar = () => {
         // console.log(messages,'messages');
         // console.log(messages,'cm')
         // console.log(messages[0], messages[0]?.id);
+
         messages.forEach((msg) => {
           // console.log(111111);
           const handleDel = async () => {
@@ -47,6 +48,7 @@ const Navbar = () => {
     signOut(auth);
     navigate("/login");
   };
+  
   // useEffect(()=>{
   //   console.log(msgs,'cm');
   // },[msgs])

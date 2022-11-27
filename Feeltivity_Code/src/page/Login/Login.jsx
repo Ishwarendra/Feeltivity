@@ -23,7 +23,7 @@ export default function Login() {
 
   const LogInUser = async (e) => {
     e.preventDefault();
-    if (!data.name || !data.email || !data.password) {
+    if (!data.email || !data.password) {
       setData({ ...data, error: "All fields are required!" });
     }
     const result = await signInWithEmailAndPassword(

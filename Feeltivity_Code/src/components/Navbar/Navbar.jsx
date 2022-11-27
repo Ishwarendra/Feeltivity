@@ -95,26 +95,50 @@ const Navbar = () => {
       </div>
 
       {/* Logout */}
-      <div className="grid grid-cols-2 place-items-center">
-        <Link to="/login">
-          <Button
-            variant="outlined"
-            endIcon={<LogoutRounded />}
-            sx={{ borderRadius: 2 }}
-            onClick={handleSignout}
-          >
-            Logout
-          </Button>
-        </Link>
+      {curr_user && (
+        <div className="grid grid-cols-2 place-items-center">
+          <Link to="/login">
+            <Button
+              variant="outlined"
+              endIcon={<LogoutRounded />}
+              sx={{ borderRadius: 2 }}
+              onClick={handleSignout}
+            >
+              Logout
+            </Button>
+          </Link>
 
-        <Avatar
-          sx={{ bgcolor: lightBlue[500] }}
-          alt="Remy Sharp"
-          src="/broken-image.jpg"
-        >
-          {user.user.email[0]}
-        </Avatar>
-      </div>
+          <Avatar
+            sx={{ bgcolor: lightBlue[500] }}
+            alt=""
+            src="/broken-image.jpg"
+          >
+            {user.user.email[0].toUpperCase()}
+          </Avatar>
+        </div>
+      )}
+
+      {/* If user not logged in */}
+      {!curr_user && (
+        <div className="flex gap-3 place-items-center">
+          <Link to="/login">
+            <Button
+              variant="contained"
+              sx={{ borderRadius: 2, backgrounColor: '#2d5abf' }}
+            >
+              LogIn
+            </Button>
+          </Link>
+          <Link to="/register">
+            <Button
+              variant="outlined"
+              sx={{ borderRadius: 2 }}
+            >
+              SignUp
+            </Button>
+          </Link>
+        </div>
+      )}
     </div>
   );
 };

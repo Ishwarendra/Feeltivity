@@ -122,7 +122,7 @@ export default function ChatPage() {
     if (curr_user) {
       const chatCollectionRef = collection(db, "messages", curr_user, "chats");
       const q = query(chatCollectionRef, orderBy("SentAt", "asc"));
-      onSnapshot(q, (snap) => {
+      const unsub=onSnapshot(q, (snap) => {
         let messages = [];
         snap.forEach((doc) => {
           messages.push(doc.data());
@@ -130,6 +130,7 @@ export default function ChatPage() {
         setChatMessages(messages);
         // console.log(messages);
       });
+      return ()=>{unsub()};
     }
   }, []);
 

@@ -4,11 +4,10 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 def emotion_output(text):
-    try:
+    # try:
         emotion_dict = te.get_emotion(text)
         return emotion_dict
-    except: 
-        pass
+    
 
 
 app = FastAPI()

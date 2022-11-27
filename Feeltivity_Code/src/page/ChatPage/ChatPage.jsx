@@ -29,7 +29,7 @@ export default function ChatPage() {
   const [chatMessages, setChatMessages] = useState([]);
 
   useEffect(() => {
-    // console.log(user, "user-change");
+    console.log(user, "user-change");
     if (!user.user) {
       navigate("/login");
     }

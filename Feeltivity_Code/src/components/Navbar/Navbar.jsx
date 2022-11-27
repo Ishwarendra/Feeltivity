@@ -95,7 +95,7 @@ const Navbar = () => {
       </div>
 
       {/* Logout */}
-      <div className="grid grid-cols-2 place-items-center">
+      {curr_user && <div className="grid grid-cols-2 place-items-center">
         <Link to="/login">
           <Button
             variant="outlined"
@@ -112,9 +112,9 @@ const Navbar = () => {
           alt="Remy Sharp"
           src="/broken-image.jpg"
         >
-          I
+          {user.user.email[0].toUpperCase()}
         </Avatar>
-      </div>
+      </div>}
     </div>
   );
 };

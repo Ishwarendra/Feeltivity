@@ -6,6 +6,7 @@ import { AuthContext } from "../../contexts/auth";
 import { ChatMessage } from "../../components/ChatMessage/ChatMessage";
 import { Button, TextField } from "@mui/material";
 import SendRoundedIcon from "@mui/icons-material/SendRounded";
+import Axios from "axios";
 import {
   addDoc,
   collection,
@@ -37,16 +38,57 @@ export default function ChatPage() {
 
   // unix to IST
   const unixToIST = (unix_time) => {
-    let IST = `${unix_time.getHours()}:${unix_time.getMinutes()}`
-    return IST
-  }
+    let IST = `${unix_time.getHours()}:${unix_time.getMinutes()}`;
+    return IST;
+  };
 
   const makeChatMessageJSX = (msg, sentTime, human, key = null) => {
     return (
-      <div className="grid grid-cols-1 place-items-end hover:bg-gray-200 p-[2px]">
+      <div
+        key={key}
+        className="grid grid-cols-1 place-items-end hover:bg-gray-200 p-[2px]"
+      >
         <ChatMessage msg={msg} human={human} sentTime={sentTime} />
       </div>
     );
+  };
+
+  // API Call
+  const axiosCall = (msg) => {
+    console.log("inside axiosCall", msg);
+    const api_url = `http://127.0.0.1:8000/emotion`;
+
+    Axios.post(api_url, {
+      text: msg,
+    }).then((response) => {
+      // got data here
+      var emotions = [
+        response.data.Happy,
+        response.data.Sad,
+        response.data.Angry,
+        response.data.Fear,
+        response.data.Surprise,
+      ];
+
+      var chatBotResponse = [
+        "Happy I am",
+        "Sad I am",
+        "Angry I am",
+        "Fear I am",
+        "Surprised I am",
+      ];
+
+      var max_emotion = Math.max(...emotions);
+
+      for (let i = 0; i < emotions.length; i++) {
+        if (emotions[i] === max_emotion) {
+          console.log(chatBotResponse[i])
+          return chatBotResponse[i];
+        }
+      }
+
+      return "";
+    });
   };
 
   // Add new Message
@@ -79,6 +121,11 @@ export default function ChatPage() {
       SentAt: Timestamp.fromDate(new Date()),
     });
 
+    // TODO: Add chatbot reply in database
+    var chatBotReply = axiosCall(messageInBox);
+    console.log("chatBotReply: ", chatBotReply)
+    // setChatMessages( [makeChatMessageJSX(chatBotReply, "12:22", false)], ...chatMessages )
+
     // const q=query(chatCollectionRef,orderBy('SentAt','asc'));
     // onSnapshot(q,(snap)=>{
     //   let messages=[];
@@ -88,7 +135,7 @@ export default function ChatPage() {
     //   console.log(messages);
     // })
     // PRINTING TO SEE EMOTION FOR EACH TEXT
-    // console.log("Emotion related to" + messageInBox + "are:\n", getEmotionFromList(messageInBox)); 
+    // console.log("Emotion related to" + messageInBox + "are:\n", getEmotionFromList(messageInBox));
     setMessageInBox("");
   };
 
@@ -119,7 +166,7 @@ export default function ChatPage() {
         </div>
 
         {/* Message Box */}
-        <form className="mt-2 flex" onSubmit={(e) => console.log("shjs", e)}>
+        <form className="mt-2 flex">
           <TextField
             type="reset"
             placeholder="Type Something ... "

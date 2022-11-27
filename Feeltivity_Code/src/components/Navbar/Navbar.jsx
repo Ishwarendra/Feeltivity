@@ -1,6 +1,6 @@
 import { LogoutRounded } from "@mui/icons-material";
 import { Avatar, Button } from "@mui/material";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "./../../assets/image/logo.png";
 import {
@@ -33,7 +33,7 @@ const Navbar = () => {
         setMsgs(messages);
         // console.log(messages,'messages');
         // console.log(messages,'cm')
-        console.log(messages[0], messages[0]?.id);
+        // console.log(messages[0], messages[0]?.id);
         messages.forEach((msg) => {
           // console.log(111111);
           const handleDel = async () => {
@@ -52,7 +52,7 @@ const Navbar = () => {
   // },[msgs])
 
   const user = useContext(AuthContext);
-  console.log("NavBar.jsx", user);
+  // console.log("NavBar.jsx", user);
 
   return (
     <div className="grid grid-cols-4 gap-5 justify-evenly align-middle place-items-stretch pl-10 bg-green-100">

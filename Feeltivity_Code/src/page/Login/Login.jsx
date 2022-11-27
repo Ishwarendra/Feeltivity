@@ -7,6 +7,7 @@ import { Button, TextField } from "@mui/material";
 import logo from "./../../assets/image/logo.png";
 import logo_big from "./../../assets/image/logo_big.png";
 import GoogleIcon from "@mui/icons-material/Google";
+import { Construction } from "@mui/icons-material";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -46,8 +47,10 @@ export default function Login() {
       {/* in end Don't have an account yet? Sign Up */}
 
       {/* Left Side */}
-      <div className="hidden h-[100vh] bg-[#2d5abf] sm:text-center sm:align-middle sm:flex sm:flex-col justify-center"> 
-        <div className="flex justify-center"><img src={logo_big} alt="" className="h-[300px] w-[300px]" /></div>
+      <div className="hidden h-[100vh] bg-[#2d5abf] sm:text-center sm:align-middle sm:flex sm:flex-col justify-center">
+        <div className="flex justify-center">
+          <img src={logo_big} alt="" className="h-[300px] w-[300px]" />
+        </div>
         <div className="bold text-white text-6xl uppercase">Feeltivity</div>
         <div className="text-white font-semibold">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, tempore?
@@ -100,7 +103,7 @@ export default function Login() {
 
         <div>
           Don't have an account yet?
-          <Link type="text" to={'/register'}>
+          <Link type="text" to={"/register"}>
             <Button variant="text">Sign Up</Button>
           </Link>
         </div>

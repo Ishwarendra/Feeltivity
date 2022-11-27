@@ -112,7 +112,7 @@ const Navbar = () => {
           alt="Remy Sharp"
           src="/broken-image.jpg"
         >
-          I
+          {user.user.email[0]}
         </Avatar>
       </div>
     </div>

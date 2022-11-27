@@ -1,10 +1,10 @@
 const data = [
     {
         name: "Adil Vinayak",
-        subtitle: "Full Stack Developer",
+        subtitle: "Front End Developer",
         content: "Yet another Competitive Programmer, but I do some firebase stuff in free time",
         socialLinks: [
-            '#',
+            'https://www.linkedin.com/in/adil-vinayak-5b942a1b8/',
             'https://github.com/adil19-net'
         ],
         direction: 'left',
@@ -26,8 +26,8 @@ const data = [
         subtitle: "Subtitle Here",
         content: "I am a Machine Learning and Data Science enthusiast. I am an individual who wants to inculcate my learnings to incorporate efficient and useful end results.",
         socialLinks: [
-            '#', 
-            '#'
+            'https://www.linkedin.com/in/shiraz-mangat-33b4ba220/', 
+            'https://github.com/shiraz-30'
         ],
         direction: 'left',
     },
@@ -37,7 +37,7 @@ const data = [
         subtitle: "Subtitle Here",
         content: `Hey! I Am Suvi. Alongside Web Development, I Love To Sketch And I'm Sports And Fitness Freak!`,
         socialLinks: [
-            '#', 
+            'https://www.linkedin.com/in/suvidhi/', 
             'https://github.com/Tech-Suvidhi/'
         ],
         direction: 'right',

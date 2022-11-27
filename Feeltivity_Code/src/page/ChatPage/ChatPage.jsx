@@ -96,7 +96,7 @@ export default function ChatPage() {
           const addChatbotResp=async()=>{
             await addDoc(chatCollectionRef,{
               message: chatBotResponse[i],
-              from: 'Chat-bot',
+              from: `Chat-bot-${curr_user}`,
               SentAt: Timestamp.fromDate(new Date())
             });
           }
@@ -114,7 +114,7 @@ export default function ChatPage() {
     if (curr_user) {
       const chatCollectionRef = collection(db, "messages", curr_user, "chats");
       const q = query(chatCollectionRef, orderBy("SentAt", "asc"));
-      onSnapshot(q, (snap) => {
+      const unsub=onSnapshot(q, (snap) => {
         let messages = [];
         snap.forEach((doc) => {
           messages.push(doc.data());
@@ -122,6 +122,7 @@ export default function ChatPage() {
         setChatMessages(messages);
         // console.log(messages);
       });
+      return ()=>{unsub()};
     }
   }, []);
 

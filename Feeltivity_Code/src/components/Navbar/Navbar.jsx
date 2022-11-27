@@ -65,7 +65,7 @@ const Navbar = () => {
             <img
               src={logo}
               alt="Feeltivity logo"
-              className="h-[70px] w-[70px]"
+              className="h-[70px] w-[70px] hover:animate-pulse"
             />
             <div className="uppercase text-lg font-bold self-center bg-[#edfdfd] p-2 rounded-lg text-[#0fc9f2]">
               Feeltivity

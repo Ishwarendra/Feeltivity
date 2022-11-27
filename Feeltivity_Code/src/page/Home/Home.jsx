@@ -17,13 +17,14 @@ export default function Home() {
       {/* Some Content (with button) | SVG */}
       {/* Some Button and more text */}
       <div className="p-5">
+        {/* <Slide triggerOnce> */}
         <div className="p-3 bg-gradient-to-r from-cyan-500 to-blue-500 shadow-2xl flex text-center max-h-[70vh]">
           <div className="flex-1 align-center m-auto">
             <div className="text-[50px] uppercase">Feeltivity</div>
-            <div className="text-lg font-semibold">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-              Quibusdam praesentium, non enim laborum harum fuga ad.
-            </div>
+              <div className="text-lg font-semibold">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                Quibusdam praesentium, non enim laborum harum fuga ad.
+              </div>
           </div>
 
           <div className="flex-1 bg-no-repeat bg-center bg-auto">
@@ -34,7 +35,7 @@ export default function Home() {
             />
           </div>
         </div>
-
+        {/* </Slide> */}
         {/* 3 points about feeltivity */}
         <div className="grid">
           <div className="text-5xl uppercase text-center mt-10 mb-12 underline underline-offset-8">
@@ -83,7 +84,6 @@ export default function Home() {
             More About Project
           </div>
           <div className="flex flex-col justify-center align-middle">
-            
             <div className="self-center">
               <img
                 src={level0DFD}
@@ -92,13 +92,15 @@ export default function Home() {
               />
             </div>
 
-            <div className="uppercase text-lg self-center font-semibold my-3 underline">Figure-1: Level-0 Data Flow Diagram</div>
+            <div className="uppercase text-lg self-center font-semibold my-3 underline">
+              Figure-1: Level-0 Data Flow Diagram
+            </div>
           </div>
         </div>
       </div>
       {/* Footer */}
-      <div className="bg-[#f6f6f6] p-3 text-center">
-        @ some Copyright line
+      <div className="bg-[#1e40af] p-3 text-center text-white font-semibold">
+        &#169; Copyright maybe :) &#8482;
         <Link to="https://github.com/Ishwarendra/Feeltivity">
           <GitHubIcon sx={{ mx: 3 }} />
         </Link>

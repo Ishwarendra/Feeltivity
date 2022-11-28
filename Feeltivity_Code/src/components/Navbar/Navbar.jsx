@@ -118,7 +118,7 @@ const Navbar = () => {
             src="/broken-image.jpg"
           >
             {user.user.email[0].toUpperCase()}
-            </Avatar>
+          </Avatar>
         </div>
       )}
 

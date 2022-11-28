@@ -4,13 +4,12 @@ import {getAuth} from 'firebase/auth'
 import {getStorage} from 'firebase/storage'
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBgmd_rP-_AUzMncadigX19Sy8CyvguGQI",
-  authDomain: "feeltivity.firebaseapp.com",
-  projectId: "feeltivity",
-  storageBucket: "feeltivity.appspot.com",
-  messagingSenderId: "1049393684316",
-  appId: "1:1049393684316:web:9213c9e2f0ac0438d3eb99",
-  measurementId: "G-NRCL2VEMHJ"
+  apiKey: "AIzaSyCwfR6wB3y1cI7ucLgVPXYhYtMtJAdbXP8",
+  authDomain: "feeltivity-9c2b5.firebaseapp.com",
+  projectId: "feeltivity-9c2b5",
+  storageBucket: "feeltivity-9c2b5.appspot.com",
+  messagingSenderId: "1025472089403",
+  appId: "1:1025472089403:web:0896f6bae66fce3d02fb1e"
 };
 
 const app = initializeApp(firebaseConfig);

@@ -1,7 +1,17 @@
 const greetings = [
     'Hi, how are you?',
-    'How have you been doing?',
-    'Hey! Whatsup!'
+    'Hey! Whatsup!',
+    'Hey there!',
+    'Hey there, I am Feeltivity chatbot and I am here to help.',
+    "It's a pleasure to meet you.",
+    "Konichiwa, it's a pleasure to meet you.",
+    "Ciao, it's a pleasure to meet you.",
+    "Hola, it's a pleasure to meet you.",
+    "Konichiwa, nice to meet you.",
+    "Ciao, nice to meet you.",
+    "Hola, nice to meet you.",
+    "Hello, nice to meet you.",
+
 ]
 
 const happyResponses = [

@@ -83,12 +83,36 @@ export default function ChatPage() {
       ];
 
       var max_emotion = Math.max(...emotions);
+      if(max_emotion===0){
+        // try {
+        //   const chatCollectionRef = collection(
+        //     db,
+        //     "messages",
+        //     curr_user,
+        //     "chats"
+        //   );
+        //   const addChatbotResp = async () => {
+        //     await addDoc(chatCollectionRef, {
+        //       message: getRandomElementFromArray(
+        //         chatBotResponses['greetings']
+        //       ),
+        //       from: "Chat-bot",
+        //       SentAt: Timestamp.fromDate(new Date()),
+        //     });
+        //   };
+
+        //   addChatbotResp();
+        // } catch {}
+        // return chatBotResponses['greetings'];
+        console.log(getRandomElementFromArray(chatBotResponses['greetings']));
+        return;
+      } 
       // console.log(max_emotion)
       for (let i = 0; i < emotions.length; i++) {
         if (emotions[i] === max_emotion) {
-          // console.log(
-          //   getRandomElementFromArray(chatBotResponses[emotionsArray[i]]),
-          // );
+          console.log(
+            getRandomElementFromArray(chatBotResponses[emotionsArray[i]]),
+          );
 
           try {
             const chatCollectionRef = collection(

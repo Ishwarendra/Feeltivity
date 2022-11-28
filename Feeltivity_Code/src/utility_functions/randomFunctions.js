@@ -18,4 +18,4 @@ function getRandomElementFromArray(a) {
   return a[index];
 }
 
-export { getRandomColor, getRandomElementFromArray };
+export { getRandomColor, getRandomElementFromArray, getRandomInt };

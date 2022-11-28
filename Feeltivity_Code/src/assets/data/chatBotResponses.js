@@ -11,7 +11,6 @@ const greetings = [
     "Ciao, nice to meet you.",
     "Hola, nice to meet you.",
     "Hello, nice to meet you.",
-
 ]
 
 const happyResponses = [

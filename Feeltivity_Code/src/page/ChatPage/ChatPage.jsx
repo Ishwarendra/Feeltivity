@@ -20,6 +20,7 @@ import chatBotResponses, {
   emotionsArray,
 } from "./../../assets/data/chatBotResponses.js";
 import { getRandomElementFromArray } from "./../../utility_functions/randomFunctions.js";
+import getSongByID from "./../../assets/data/songLinks.js"
 
 // import {getEmotionFromList} from './../../emotion_identification/emotion_utils.js';
 
@@ -42,11 +43,22 @@ export default function ChatPage() {
 
   // unix to IST
   const unixToIST = (unix_time) => {
-    let IST = `${unix_time.getHours()}:${unix_time.getMinutes()}`;
-    return IST;
+    // let IST = `${unix_time.getHours()}:${unix_time.getMinutes()}`;
+    var hours = `${unix_time.getHours()}`
+    var minutes = `${unix_time.getMinutes()}`
+
+    const norm = (s) => {
+      if (s.length === 1) {
+        s = `0${s}`
+      }
+
+      return s;
+    }
+
+    return norm(hours) + ":" + norm(minutes);
   };
 
-  const makeChatMessageJSX = (msg, sentTime, human, key = null) => {
+  const makeChatMessageJSX = (msg, sentTime, human, key = null, links = []) => {
     var positionClass = "";
     if (human) {
       positionClass = "place-items-end";
@@ -84,36 +96,32 @@ export default function ChatPage() {
 
       var max_emotion = Math.max(...emotions);
       if(max_emotion===0){
-        // try {
-        //   const chatCollectionRef = collection(
-        //     db,
-        //     "messages",
-        //     curr_user,
-        //     "chats"
-        //   );
-        //   const addChatbotResp = async () => {
-        //     await addDoc(chatCollectionRef, {
-        //       message: getRandomElementFromArray(
-        //         chatBotResponses['greetings']
-        //       ),
-        //       from: "Chat-bot",
-        //       SentAt: Timestamp.fromDate(new Date()),
-        //     });
-        //   };
+        try {
+          const chatCollectionRef = collection(
+            db,
+            "messages",
+            curr_user,
+            "chats"
+          );
+          const addChatbotResp = async () => {
+            await addDoc(chatCollectionRef, {
+              message: getRandomElementFromArray(
+                chatBotResponses['greetings']
+              ),
+              from: "Chat-bot",
+              SentAt: Timestamp.fromDate(new Date()),
+            });
+          };
 
-        //   addChatbotResp();
-        // } catch {}
-        // return chatBotResponses['greetings'];
-        console.log(getRandomElementFromArray(chatBotResponses['greetings']));
+          addChatbotResp();
+        } catch {}
+        // console.log(getRandomElementFromArray(chatBotResponses['greetings']));
         return;
       } 
       // console.log(max_emotion)
       for (let i = 0; i < emotions.length; i++) {
         if (emotions[i] === max_emotion) {
-          console.log(
-            getRandomElementFromArray(chatBotResponses[emotionsArray[i]]),
-          );
-
+          console.log(getSongByID(i))
           try {
             const chatCollectionRef = collection(
               db,
@@ -123,9 +131,7 @@ export default function ChatPage() {
             );
             const addChatbotResp = async () => {
               await addDoc(chatCollectionRef, {
-                message: getRandomElementFromArray(
-                  chatBotResponses[emotionsArray[i]]
-                ),
+                message: getSongByID(i),
                 from: "Chat-bot",
                 SentAt: Timestamp.fromDate(new Date()),
               });
@@ -133,7 +139,7 @@ export default function ChatPage() {
 
             addChatbotResp();
           } catch {}
-          return chatBotResponses[emotionsArray[i]];
+          return;
         }
       }
 
@@ -201,7 +207,7 @@ export default function ChatPage() {
 
       <div className="p-3 bg-[#f4f4f9] my-[20px] sm:mx-3 md:mx-5 rounded-md">
         {/* Bottom has a chat button */}
-        <div className="h-[70vh] m-4 mb-0">
+        <div className="h-[70vh] m-4 mb-0 overflow-auto">
           {chatMessages?.map((msg, key) =>
             curr_user === msg.from
               ? makeChatMessageJSX(

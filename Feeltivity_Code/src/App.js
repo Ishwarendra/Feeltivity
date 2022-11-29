@@ -6,7 +6,7 @@ import Login from './page/Login/Login'
 import  Register from './page/Register/Register'
 import ChatPage from './page/ChatPage/ChatPage'
 import AuthProvider from './contexts/auth';
-import ContactUs from './page/ContactUs/ContactUs';
+import DefaultSongPage from './page/DefaultSongPage/DefaultSongPage';
 
 // Home
 
@@ -20,7 +20,7 @@ function App() {
           <Route exact path='/login' element={<Login/>} />
           <Route exact path='/aboutus' element={<AboutUs/>} />
           <Route exact path='/chatpage' element={<ChatPage/>} />
-          <Route exact path='/contactus' element={<ContactUs />} />
+          <Route exact path='/defaultsongs' element={<DefaultSongPage />} />
         </Routes>
       </Router>
     </AuthProvider>

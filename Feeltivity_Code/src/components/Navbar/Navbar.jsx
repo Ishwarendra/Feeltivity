@@ -14,6 +14,7 @@ import { db, auth } from "../../firebase-config";
 import { AuthContext } from "../../contexts/auth";
 import { signOut } from "firebase/auth";
 import { lightBlue } from "@mui/material/colors";
+import { DefaultSongPage } from "../../page/DefaultSongPage/DefaultSongPage";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -80,18 +81,18 @@ const Navbar = () => {
       {/* ChatPage, AboutUs */}
       <div className="grid grid-cols-3 place-items-center text-white">
         <Link to="/chatpage">
-          <div className="hover:bg-[#edfdfd] hover:text-[#40a3b6] font-[500] px-2 py-2 rounded-lg">
+          <div className="hover:bg-[#edfdfd] hover:text-[#40a3b6] font-[500] px-2 py-2 rounded-lg text-center">
             ChatPage
           </div>
         </Link>
         <Link to="/aboutus">
-          <div className="hover:bg-[#edfdfd] hover:text-[#40a3b6] font-[500] px-2 py-2 rounded-lg">
+          <div className="hover:bg-[#edfdfd] hover:text-[#40a3b6] font-[500] px-2 py-2 rounded-lg text-center">
             AboutUs
           </div>
         </Link>
-        <Link to={"/contactus"}>
-          <div className="hover:bg-[#edfdfd] hover:text-[#40a3b6] font-[500] px-2 py-2 rounded-lg">
-            ContactUs
+        <Link to={"/defaultsongs"}>
+          <div className="hover:bg-[#edfdfd] hover:text-[#40a3b6] font-[500] px-2 py-2 rounded-lg text-center">
+            Default Songs
           </div>
         </Link>
       </div>

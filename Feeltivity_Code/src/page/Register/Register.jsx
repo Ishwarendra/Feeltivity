@@ -75,7 +75,7 @@ export default function Register() {
       <div className="text-center mx-[10%] flex flex-col justify-around">
         <div className="grid grid-cols-1 mx-[5%] sm:mx-[5%] md:mx-[15%]">
           <div className="grid grid-cols-3 place-items-center place-content-center m-auto">
-            <img src={logo} alt="" className="contain m-auto h-[70px] w-[70px]" />
+            <img src={logo} alt="" className="hover:animate-pulse contain m-auto h-[70px] w-[70px]" />
             <div className="text-4xl uppercase mt-5 mb-1 col-span-2">hello!</div>
           </div>
           <div className="font-semibold col-span-2">

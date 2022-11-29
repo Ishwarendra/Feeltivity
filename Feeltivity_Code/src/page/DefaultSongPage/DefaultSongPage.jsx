@@ -9,7 +9,7 @@ const DefaultSongPage = () => {
         <Navbar />
 
       </div>
-      <div className="flex flex-wrap justify-center">
+      <div className="flex flex-wrap justify-centerhover:animate-pulse">
         <div className="m-4 w-[90vw] sm:w-[70vw] md:w-[40vw]">
           <SpotifyCard
             title="1"

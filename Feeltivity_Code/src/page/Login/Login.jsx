@@ -59,7 +59,7 @@ export default function Login() {
 
       <div className="text-center mx-[10%] flex flex-col justify-evenly">
         <div className="block">
-          <img src={logo} alt="" className="cover m-auto h-[80px] w-[80px]" />
+          <img src={logo} alt="" className="hover:animate-pulse cover m-auto h-[80px] w-[80px]" />
           <div className="text-4xl uppercase mt-5 mb-1">hello!</div>
           <div>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea,

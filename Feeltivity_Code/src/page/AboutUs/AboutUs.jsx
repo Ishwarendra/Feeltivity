@@ -18,7 +18,7 @@ export default function AboutUs() {
         <Navbar />
       </div>
 
-      <div className="font-bold text-4xl text-white p-5">Meet our team</div>
+      <div className="font-bold text-4xl text-white p-5 underline underline-offset-8 text-center uppercase">Meet our team</div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 place-items-center">
         {aboutUsData?.map((person, key) => (

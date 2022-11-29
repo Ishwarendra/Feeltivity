@@ -2,7 +2,7 @@ const data = [
     {
         name: "Adil Vinayak",
         subtitle: "Front End Developer",
-        content: "Yet another Competitive Programmer, but I do some firebase stuff in free time",
+        content: "Yet another Competitive Programmer, but I do some firebase stuff in free time. I used firebase to store user's data as well as authenticate them.",
         socialLinks: [
             'https://www.linkedin.com/in/adil-vinayak-5b942a1b8/',
             'https://github.com/adil19-net'
@@ -13,7 +13,7 @@ const data = [
     {
         name: "Ishwarendra Jha",
         subtitle: "Front End Developer",
-        content: "Full time Competitive Programmer, part time Web Developer.",
+        content: "Full time Competitive Programmer, part time Web Developer. I worked in designing the landing page and chat UI of Feeltivity.",
         socialLinks: [
             'https://www.linkedin.com/in/ishwarendra-jha-900545202/',
             'https://github.com/Ishwarendra',

@@ -52,7 +52,7 @@ export default function Login() {
           <img src={logo_big} alt="" className="h-[300px] w-[300px]" />
         </div>
         <div className="bold text-white text-6xl uppercase">Feeltivity</div>
-        <div className="text-white font-semibold">
+        <div className="text-white font-semibold mx-5">
           Hey Lovely user! We really hope that you are doing great! Why not chat and hear some music together again?
         </div>
       </div>
@@ -60,8 +60,8 @@ export default function Login() {
       <div className="text-center mx-[10%] flex flex-col justify-evenly">
         <div className="block">
           <img src={logo} alt="" className="hover:animate-pulse cover m-auto h-[80px] w-[80px]" />
-          <div className="text-4xl uppercase mt-5 mb-1">Hey! You came!</div>
-          <div>
+          <div className="text-4xl uppercase mt-5 mb-1 text-[#2d5abf]">Hey! You came!</div>
+          <div className="font-medium text-[#2d5abf]">
             Welcome Back song lover. Login to revisit the experience of personalized songs based on your emotions right now! 
           </div>
         </div>

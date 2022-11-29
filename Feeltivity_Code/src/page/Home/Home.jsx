@@ -38,17 +38,18 @@ export default function Home() {
         {/* </Slide> */}
         {/* 3 points about feeltivity */}
         <div className="grid">
-          <div className="text-5xl uppercase text-center mt-10 mb-12 underline underline-offset-8">
-            Lets get you know us more!
+          <div className="text-5xl text-[#F9F9F9] uppercase text-center mt-10 mb-12 underline underline-offset-8">
+            Let's get you know us more!
           </div>
           <div className="grid grid-cols-1 mx-[40px] sm:mx-[0] md:grid-cols-3 gap-10">
             {/* Fix bgColor Issue */}
             <div>
               <SmallCard
                 muiIcon={"✅"}
-                heading="Personalised songs? We got you!"
+                heading="Personalised songs?"
+                subheading=" We got you!"
                 content="Our chatbot will provide you a list of personalized songs based on your current emotions."
-                bgColorClass="bg-gradient-to-l from-[#6768ff] via-[#6768ff] to-[#94a9fc]"
+                bgColorClass="bg-gradient-to-l from-[#6768ff] via-[#6768ff] to-[#808dfd]"
                 textColorClass="text-white"
               />
             </div>
@@ -66,9 +67,10 @@ export default function Home() {
             <div>
               <SmallCard
                 muiIcon={"✅"}
-                heading="No chatbot? Lets just surf"
+                heading="No chatbot?"
+                subheading="Lets just surf"
                 content="If you do not want to use our chatbot, feel free to surf any song you want to hear."
-                bgColorClass="bg-gradient-to-l from-[#94a9fc] via-[#6768ff] to-[#6768ff]"
+                bgColorClass="bg-gradient-to-l from-[#808dfd] via-[#6768ff] to-[#6768ff]"
                 textColorClass="text-white"
               />
             </div>

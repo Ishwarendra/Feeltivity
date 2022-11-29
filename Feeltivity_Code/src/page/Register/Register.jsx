@@ -76,11 +76,10 @@ export default function Register() {
         <div className="grid grid-cols-1 mx-[5%] sm:mx-[5%] md:mx-[15%]">
           <div className="grid grid-cols-3 place-items-center place-content-center m-auto">
             <img src={logo} alt="" className="hover:animate-pulse contain m-auto h-[70px] w-[70px]" />
-            <div className="text-4xl uppercase mt-5 mb-1 col-span-2">hello!</div>
+            <div className="text-4xl uppercase mt-5 mb-1 col-span-2">Hey There!</div>
           </div>
           <div className="font-semibold col-span-2">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea,
-            tempore?
+            Welcome to our world where you can have access to getting personalized song recommendations based on your current emotion with our revolutionary chatbot!
           </div>
         </div>
 
@@ -153,7 +152,7 @@ export default function Register() {
           <img src={register_big} alt="" />
         </div>
         <div className="text-white font-semibold text-center">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, tempore?
+          Hi! We are so Glad you made it here! We'd love to chat and recommend music! Jump right in!
         </div>
       </div>
     </div>

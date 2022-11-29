@@ -22,8 +22,8 @@ export default function Home() {
           <div className="flex-1 align-center m-auto">
             <div className="text-[50px] uppercase">Feeltivity</div>
               <div className="text-lg font-semibold">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Quibusdam praesentium, non enim laborum harum fuga ad.
+              Feeling a certain emotion but don't know which song to hear? 
+              Pour your heart out to our chatbot and we have the perfect combination with us for you! 
               </div>
           </div>
 
@@ -39,7 +39,7 @@ export default function Home() {
         {/* 3 points about feeltivity */}
         <div className="grid">
           <div className="text-5xl uppercase text-center mt-10 mb-12 underline underline-offset-8">
-            some good heading
+            Lets get you know us more!
           </div>
           <div className="grid grid-cols-1 mx-[40px] sm:mx-[0] md:grid-cols-3 gap-10">
             {/* Fix bgColor Issue */}

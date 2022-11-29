@@ -2,7 +2,7 @@ import React from 'react'
 
 const SpotifyCard = ({link, title}) => {
   return (
-    <div>
+    <div className='brightness-90 hover:brightness-100'>
         <iframe
           className="rounded-lg"
           src={link}

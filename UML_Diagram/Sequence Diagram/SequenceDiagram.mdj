@@ -62,11 +62,11 @@
 											"_parent": {
 												"$ref": "AAAAAAGEw60G2l6Mz9c="
 											},
-											"font": "Lato;13;0",
-											"left": 47.90899658203125,
+											"font": "Lato;15;0",
+											"left": 49.894989013671875,
 											"top": 5,
-											"width": 112.26689147949219,
-											"height": 13,
+											"width": 129.3848876953125,
+											"height": 15,
 											"text": "SequenceDiagram1"
 										},
 										{
@@ -75,15 +75,15 @@
 											"_parent": {
 												"$ref": "AAAAAAGEw60G2l6Mz9c="
 											},
-											"font": "Lato;13;1",
+											"font": "Lato;15;1",
 											"left": 29,
 											"top": 5,
-											"width": 13.90899658203125,
-											"height": 13,
+											"width": 15.894989013671875,
+											"height": 15,
 											"text": "sd"
 										}
 									],
-									"font": "Lato;13;0",
+									"font": "Lato;15;0",
 									"left": 24,
 									"width": 756,
 									"height": 745,

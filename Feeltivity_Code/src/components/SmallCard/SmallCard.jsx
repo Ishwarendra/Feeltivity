@@ -15,7 +15,7 @@ const SmallCard = ({muiIcon, heading, content, bgColorClass, textColorClass}) =>
         {/* Heading */}
         {/* Content */}
         <div className='p-4 bg-white m-5 rounded-lg'>{muiIcon}</div>
-        <div className='pt-4 font-semibold text-2xl'>{heading}</div>
+        <div className='pt-4 font-semibold text-2xl text-center'>{heading}</div>
         <div className='pt-4'>{content}</div>
     </div>
   )

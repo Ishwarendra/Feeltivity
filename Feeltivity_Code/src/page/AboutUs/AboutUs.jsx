@@ -20,10 +20,10 @@ export default function AboutUs() {
 
       <div className="font-bold text-4xl text-white p-5">Meet our team</div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 place-items-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 place-items-center">
         {aboutUsData?.map((person, key) => (
           <Slide key={key} triggerOnce direction={`${person.direction}`}>
-            <div>
+            <div className="m-6">
               <ProfileCard
                 name={person.name}
                 subtitle={person.subtitle}

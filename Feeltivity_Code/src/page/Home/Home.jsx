@@ -19,7 +19,7 @@ export default function Home() {
       <div className="p-5">
         {/* <Slide triggerOnce> */}
         <div className="p-3 bg-gradient-to-r from-cyan-500 to-blue-500 shadow-2xl flex text-center max-h-[70vh]">
-          <div className="flex-1 align-center m-auto">
+          <div className="flex-1 align-center m-auto text-white">
             <div className="text-[50px] uppercase">Feeltivity</div>
               <div className="text-lg font-semibold">
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit.
@@ -38,7 +38,7 @@ export default function Home() {
         {/* </Slide> */}
         {/* 3 points about feeltivity */}
         <div className="grid">
-          <div className="text-5xl uppercase text-center mt-10 mb-12 underline underline-offset-8">
+          <div className="text-5xl uppercase text-center mt-10 mb-12 underline underline-offset-8 text-[#F9F9F9]">
             some good heading
           </div>
           <div className="grid grid-cols-1 mx-[40px] sm:mx-[0] md:grid-cols-3 gap-10">
@@ -46,7 +46,7 @@ export default function Home() {
             <div>
               <SmallCard
                 muiIcon={"✅"}
-                heading="Point-1"
+                heading={"Point-1"}
                 content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae sapiente magni laborum."
                 bgColorClass="bg-gradient-to-l from-[#6768ff] via-[#6768ff] to-[#94a9fc]"
                 textColorClass="text-white"
@@ -80,7 +80,7 @@ export default function Home() {
 
         {/* Maybe add links to different diagrams and SRS */}
         <div className="flex flex-col my-10 bg-gradient-to-r from-cyan-500 to-blue-500 shadow-2xl">
-          <div className="uppercase text-center text-[50px] underline underline-offset-8 mb-4">
+          <div className="uppercase text-center text-[50px] underline underline-offset-8 mb-4 text-white">
             More About Project
           </div>
           <div className="flex flex-col justify-center align-middle">

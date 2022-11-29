@@ -7,7 +7,7 @@ import { Button, TextField } from "@mui/material";
 import logo from "./../../assets/image/logo.png";
 import logo_big from "./../../assets/image/logo_big.png";
 import GoogleIcon from "@mui/icons-material/Google";
-import { Construction } from "@mui/icons-material";
+// import { Construction } from "@mui/icons-material";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -53,17 +53,16 @@ export default function Login() {
         </div>
         <div className="bold text-white text-6xl uppercase">Feeltivity</div>
         <div className="text-white font-semibold">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, tempore?
+          Hey Lovely user! We really hope that you are doing great! Why not chat and hear some music together again?
         </div>
       </div>
 
       <div className="text-center mx-[10%] flex flex-col justify-evenly">
         <div className="block">
           <img src={logo} alt="" className="hover:animate-pulse cover m-auto h-[80px] w-[80px]" />
-          <div className="text-4xl uppercase mt-5 mb-1">hello!</div>
+          <div className="text-4xl uppercase mt-5 mb-1">Hey! You came!</div>
           <div>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea,
-            tempore?
+            Welcome Back song lover. Login to revisit the experience of personalized songs based on your emotions right now! 
           </div>
         </div>
 

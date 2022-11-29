@@ -34,7 +34,7 @@ const data = [
     
     {
         name: "Suvidhi",
-        subtitle: "Subtitle Here",
+        subtitle: "Front End Developer",
         content: `Hey! I Am Suvi. Alongside Web Development, I Love To Sketch And I'm Sports And Fitness Freak!`,
         socialLinks: [
             'https://www.linkedin.com/in/suvidhi/', 

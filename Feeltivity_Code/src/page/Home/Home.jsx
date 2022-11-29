@@ -46,8 +46,8 @@ export default function Home() {
             <div>
               <SmallCard
                 muiIcon={"✅"}
-                heading="Point-1"
-                content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae sapiente magni laborum."
+                heading="Personalised songs? We got you!"
+                content="Our chatbot will provide you a list of personalized songs based on your current emotions."
                 bgColorClass="bg-gradient-to-l from-[#6768ff] via-[#6768ff] to-[#94a9fc]"
                 textColorClass="text-white"
               />
@@ -56,9 +56,8 @@ export default function Home() {
             <div>
               <SmallCard
                 muiIcon={"✅"}
-                heading="Point-2"
-                content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam,
-            repudiandae! Maxime exercitationem.."
+                heading="Recommendation from choices"
+                content="Our system will keep into consideration your past history and will respond accordingly."
                 bgColorClass="bg-[#6768ff]"
                 textColorClass="text-white"
               />
@@ -67,10 +66,8 @@ export default function Home() {
             <div>
               <SmallCard
                 muiIcon={"✅"}
-                heading="Point-3"
-                content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam,
-            repudiandae! Maxime exercitationem, vel laudantium ut molestias ab
-            officiis repellendus."
+                heading="No chatbot? Lets just surf"
+                content="If you do not want to use our chatbot, feel free to surf any song you want to hear."
                 bgColorClass="bg-gradient-to-l from-[#94a9fc] via-[#6768ff] to-[#6768ff]"
                 textColorClass="text-white"
               />
